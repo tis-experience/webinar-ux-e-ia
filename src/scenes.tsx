@@ -2234,6 +2234,15 @@ function CaseVideo({ item, big, onToggleBig }: { item: (typeof VIDEO_CASES)[numb
     else video.pause();
   };
 
+  const seek = (event: { clientX: number; currentTarget: Element }) => {
+    const video = ref.current;
+    if (!video || !video.duration) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    video.currentTime = ratio * video.duration;
+    progress.set(ratio);
+  };
+
   return (
     <motion.div key={item.video} className="w-vid" data-playing={playing} role="button" tabIndex={0} aria-label={playing ? "Pausar o vídeo" : "Reproduzir o vídeo"} onClick={toggle} initial={STILL ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.3 } }} transition={{ duration: 0.5 }}>
       <video
@@ -2261,7 +2270,27 @@ function CaseVideo({ item, big, onToggleBig }: { item: (typeof VIDEO_CASES)[numb
       >
         {big ? <Minimize2 size={22} aria-hidden /> : <Maximize2 size={22} aria-hidden />}
       </button>
-      <motion.i className="w-vid-progress" style={{ scaleX: progress }} />
+      {/* Barra de progresso: um clique salta para esse ponto do vídeo, e arrastar percorre-o. */}
+      <span
+        className="w-vid-seek"
+        role="slider"
+        tabIndex={-1}
+        aria-label="Posição no vídeo"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        onClick={(event) => event.stopPropagation()}
+        onPointerDown={(event) => {
+          event.stopPropagation();
+          event.currentTarget.setPointerCapture(event.pointerId);
+          seek(event);
+        }}
+        onPointerMove={(event) => {
+          if (event.currentTarget.hasPointerCapture(event.pointerId)) seek(event);
+        }}
+      >
+        <i className="w-vid-track" />
+        <motion.i className="w-vid-progress" style={{ scaleX: progress }} />
+      </span>
     </motion.div>
   );
 }
