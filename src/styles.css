@@ -578,7 +578,7 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-exp-txt small { display: block; margin-top: 10px; font-size: 26px; line-height: 1.4; color: var(--s7); }
 .w-zoomview { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; background: rgba(15, 23, 42, 0.76); cursor: pointer; }
 .w-zoomview figure { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.w-zoomview img { display: block; width: 1440px; max-height: 820px; object-fit: contain; border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); }
+.w-zoomview img { display: block; width: auto; height: auto; max-width: 1440px; max-height: 800px; border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); }
 .w-zoomview figcaption { font-family: var(--strong); font-size: 26px; color: #ffffff; }
 .w-zoomview-x { position: absolute; right: 48px; top: 48px; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 28px; background: rgba(255, 255, 255, 0.14); color: #ffffff; }
 
