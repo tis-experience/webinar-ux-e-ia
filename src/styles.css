@@ -577,7 +577,16 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-exp-txt b { display: block; font-family: var(--bold); font-weight: 400; font-size: 34px; line-height: 1.2; }
 .w-exp-txt small { display: block; margin-top: 10px; font-size: 26px; line-height: 1.4; color: var(--s7); }
 .w-zoomview { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; background: rgba(15, 23, 42, 0.76); cursor: pointer; }
-.w-zoomview figure { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.w-zoomview figure { display: grid; }
+.w-zoomview-in { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.w-zoomview-in + .w-zoomview-in { grid-area: 1 / 1; }
+.w-zoomview-in:first-child { grid-area: 1 / 1; }
+.w-zoomview-nav { position: absolute; top: 50%; width: 96px; height: 96px; margin-top: -48px; display: grid !important; place-items: center; color: #ffffff !important; opacity: 0.8; transition: opacity 0.2s, transform 0.2s; }
+.w-zoomview-nav:hover { opacity: 1; }
+.w-zoomview-nav[data-side="left"] { left: 72px; }
+.w-zoomview-nav[data-side="right"] { right: 72px; }
+.w-zoomview-nav[data-side="left"]:hover { transform: translateX(-4px); }
+.w-zoomview-nav[data-side="right"]:hover { transform: translateX(4px); }
 .w-zoomview img { display: block; width: auto; height: auto; max-width: 1440px; max-height: 800px; border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); }
 .w-zoomview figcaption { font-family: var(--strong); font-size: 26px; color: #ffffff; }
 .w-zoomview-x { position: absolute; right: 48px; top: 48px; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 28px; background: rgba(255, 255, 255, 0.14); color: #ffffff; }

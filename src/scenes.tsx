@@ -4,6 +4,8 @@ import {
   Book,
   BookOpen,
   ChartColumn,
+  ChevronLeft,
+  ChevronRight,
   Check,
   CircleCheck,
   Code,
@@ -2337,13 +2339,20 @@ const EXPERIMENT_IMAGES: Record<string, string> = { "quem-sou-eu": quemSouEu, "e
 export function InnovationScene() {
   const [zoom, setZoom] = useState<number | null>(null);
 
+  const step = (delta: number) => setZoom((z) => (z === null ? z : (z + delta + EXPERIMENTS.length) % EXPERIMENTS.length));
+
+  // Com uma imagem ampliada, as setas do teclado passam de uma imagem à outra em vez de mudar de ecrã.
   useEffect(() => {
     if (zoom === null) return undefined;
     const handleKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setZoom(null);
+      else if (event.key === "ArrowLeft" || event.key === "ArrowRight") step(event.key === "ArrowRight" ? 1 : -1);
+      else return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
     };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+    window.addEventListener("keydown", handleKey, true);
+    return () => window.removeEventListener("keydown", handleKey, true);
   }, [zoom]);
 
   return (
@@ -2388,9 +2397,28 @@ export function InnovationScene() {
             transition={{ duration: 0.3 }}
           >
             <motion.figure initial={{ scale: 0.92 }} animate={{ scale: 1 }} exit={{ scale: 0.92 }} transition={{ duration: 0.4, ease: EASE }}>
-              <img src={EXPERIMENT_IMAGES[EXPERIMENTS[zoom].image]} alt="" />
-              <figcaption>{EXPERIMENTS[zoom].title}</figcaption>
+              <Swap>
+                <motion.div key={zoom} className="w-zoomview-in" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.2 } }} transition={{ duration: 0.3 }}>
+                  <img src={EXPERIMENT_IMAGES[EXPERIMENTS[zoom].image]} alt="" />
+                  <figcaption>{EXPERIMENTS[zoom].title}</figcaption>
+                </motion.div>
+              </Swap>
             </motion.figure>
+            {[-1, 1].map((delta) => (
+              <button
+                type="button"
+                key={delta}
+                className="w-zoomview-nav"
+                data-side={delta < 0 ? "left" : "right"}
+                aria-label={delta < 0 ? "Imagem anterior" : "Imagem seguinte"}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  step(delta);
+                }}
+              >
+                {delta < 0 ? <ChevronLeft size={64} strokeWidth={2} aria-hidden /> : <ChevronRight size={64} strokeWidth={2} aria-hidden />}
+              </button>
+            ))}
             <span className="w-zoomview-x" aria-hidden>
               <X size={28} />
             </span>
