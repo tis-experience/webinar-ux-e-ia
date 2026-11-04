@@ -514,12 +514,6 @@ export const VIDEO_CASES = [
   },
 ];
 
-export const PORTAL_POINTS = [
-  { title: "Uma porta única", text: "Tudo o que é RH num só lugar, em vez de e-mails e pastas partilhadas" },
-  { title: "Fala como as pessoas falam", text: "Linguagem simples, sem juridiquês" },
-  { title: "Pergunta antes de agir", text: "Confirma sempre com o colaborador antes de submeter um pedido" },
-];
-
 export const EXPERIMENTS = [
   { image: "quem-sou-eu", title: "Reconhecimento facial experimental", text: "A assistente tenta adivinhar quem é a pessoa, e cada resposta ajuda a afinar o sistema antes de o levar a eventos e totens." },
   { image: "estudio-tis", title: "Estúdio TIS & Nano Banana", text: "Ajusta a iluminação, recorta o retrato com protecção, aplica a moldura TIS ou transforma-o com o modelo Nano Banana." },

@@ -69,7 +69,6 @@ import {
   LESSONS,
   LUMA_COLUMNS,
   PANELS,
-  PORTAL_POINTS,
   PHASES,
   PROCESS_HEADS,
   QUESTIONS,
@@ -2350,20 +2349,6 @@ export function InnovationScene() {
   return (
     <section className="w-scene">
       <Head kicker="Caso 1 · O que tem de inovador" title="Do portal que informa ao portal que conversa" />
-      <div className="w-points">
-        {PORTAL_POINTS.map((point, n) => (
-          <motion.div key={point.title} className="w-point" {...rise(0.5 + n * 0.25, 20)}>
-            <span className="w-point-n">{String(n + 1).padStart(2, "0")}</span>
-            <div>
-              <h4>{point.title}</h4>
-              <p>{point.text}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-      <motion.p className="w-lbl w-exp-k" {...fade(1.4)}>
-        Pensado para crescer: duas experiências
-      </motion.p>
       <div className="w-exps">
         {EXPERIMENTS.map((exp, n) => (
           <motion.button
@@ -2374,7 +2359,7 @@ export function InnovationScene() {
             onClick={() => setZoom(n)}
             initial={STILL ? false : { opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={spring(1.5 + n * 0.45, 80, 16)}
+            transition={spring(0.4 + n * 0.45, 80, 16)}
           >
             <span className="w-exp-img">
               <img src={EXPERIMENT_IMAGES[exp.image]} alt="" />

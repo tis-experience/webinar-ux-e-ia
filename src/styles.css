@@ -567,21 +567,15 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-vcards { display: flex; flex-direction: column; gap: 20px; }
 
 /* O que tem de inovador */
-.w-points { position: absolute; left: 128px; top: 300px; width: 560px; display: flex; flex-direction: column; gap: 44px; }
-.w-point { display: flex; gap: 22px; }
-.w-point-n { font-family: var(--display); font-size: 36px; line-height: 1.1; color: var(--blue); }
-.w-point h4 { font-family: var(--bold); font-weight: 400; font-size: 32px; line-height: 1.2; }
-.w-point p { margin-top: 8px; font-size: 26px; line-height: 1.4; color: var(--s7); }
-.w-exp-k { position: absolute; left: 768px; top: 290px; }
-.w-exps { position: absolute; left: 768px; top: 340px; width: 1024px; display: flex; gap: 32px; }
-.w-exp { width: 496px; display: flex !important; flex-direction: column; overflow: hidden; background: #ffffff !important; border: 2px solid var(--s3) !important; border-radius: 20px; transition: box-shadow 0.4s, border-color 0.4s; }
+.w-exps { position: absolute; left: 128px; top: 300px; width: 1664px; display: flex; gap: 40px; }
+.w-exp { width: 812px; display: flex !important; flex-direction: column; overflow: hidden; background: #ffffff !important; border: 2px solid var(--s3) !important; border-radius: 20px; transition: box-shadow 0.4s, border-color 0.4s; }
 .w-exp:hover { box-shadow: 0 24px 48px rgba(0, 80, 218, 0.16); border-color: var(--k4) !important; }
-.w-exp-img { position: relative; display: block; height: 300px; overflow: hidden; }
+.w-exp-img { position: relative; display: block; height: 420px; overflow: hidden; }
 .w-exp-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .w-exp:hover .w-zoom { opacity: 1; }
-.w-exp-txt { display: block; padding: 26px 30px 30px; }
-.w-exp-txt b { display: block; font-family: var(--bold); font-weight: 400; font-size: 30px; line-height: 1.2; }
-.w-exp-txt small { display: block; margin-top: 10px; font-size: 24px; line-height: 1.4; color: var(--s7); }
+.w-exp-txt { display: block; padding: 30px 36px 36px; }
+.w-exp-txt b { display: block; font-family: var(--bold); font-weight: 400; font-size: 34px; line-height: 1.2; }
+.w-exp-txt small { display: block; margin-top: 10px; font-size: 26px; line-height: 1.4; color: var(--s7); }
 .w-zoomview { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; background: rgba(15, 23, 42, 0.76); cursor: pointer; }
 .w-zoomview figure { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .w-zoomview img { display: block; width: 1440px; max-height: 820px; object-fit: contain; border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); }
