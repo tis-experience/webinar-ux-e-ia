@@ -493,7 +493,7 @@ export const VIDEO_CASES = [
     autoplay: true,
     facts: [
       { label: "O que é", text: "A iniciativa Outubro Rosa da TIS, em forma de jogo" },
-      { label: "Como funciona", text: "12 descobertas, e cada uma dá uma pétala ao teu jardim", petals: true },
+      { label: "Como funciona", text: "12 descobertas, e cada uma dá uma pétala ao teu jardim" },
       { label: "Jogos simples", text: "Pares, puzzles e ordenar passos, sem pressa nem penalizações" },
       { label: "Uma canção nossa", text: "«O teu lugar é aqui», uma kizomba para as mulheres da TIS" },
     ],

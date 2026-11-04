@@ -2190,18 +2190,6 @@ export function CasesScene() {
   );
 }
 
-/** Doze pétalas que se vão preenchendo umas atrás das outras, como as descobertas do jogo. */
-function Petals() {
-  return (
-    <svg viewBox="-50 -50 100 100" className="w-petals" aria-hidden>
-      {Array.from({ length: 12 }, (_, n) => (
-        <ellipse key={n} cx={0} cy={-27} rx={9} ry={17} transform={`rotate(${n * 30})`} style={{ animationDelay: `${n * 0.5}s` }} />
-      ))}
-      <circle r={10} fill="#0050da" />
-    </svg>
-  );
-}
-
 const POSTERS: Record<string, string> = { "somos-tis": posterSomos, "agente-rh": posterAgente, "jardim-da-luma": posterLuma, cleo: posterCleo };
 const VIDEO_W = 880;
 const BAR_H = 48;
@@ -2303,10 +2291,7 @@ export function VideoScene({ index }: { index: number }) {
               <div className="w-facts">
                 {item.facts.map((fact, n) => (
                   <motion.div key={fact.label} className="w-fact" {...rise(0.7 + n * 0.25, 20)}>
-                    <p className="w-lbl">
-                      {fact.label}
-                      {"petals" in fact && fact.petals && <Petals />}
-                    </p>
+                    <p className="w-lbl">{fact.label}</p>
                     <p>{fact.text}</p>
                   </motion.div>
                 ))}
