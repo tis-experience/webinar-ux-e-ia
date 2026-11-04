@@ -644,8 +644,8 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-lesson[data-strong="true"] em { color: #ffffff; }
 
 /* Para levar daqui */
-.w-takeaway { position: absolute; left: 128px; top: 260px; width: 1500px; color: #ffffff; }
+.w-takeaway { position: absolute; left: 128px; top: 190px; width: 1500px; color: #ffffff; }
 .w-takeaway ol { margin-top: 34px; list-style: none; display: flex; flex-direction: column; gap: 26px; }
 .w-takeaway li { display: flex; gap: 28px; align-items: baseline; font-size: 38px; line-height: 1.3; }
 .w-takeaway li b { width: 72px; flex: 0 0 auto; font-family: var(--display); font-weight: 400; font-size: 44px; color: var(--k4); }
-.w-takeaway-title { margin-top: 64px; font-family: var(--display); font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -2.5px; }
+.w-takeaway-title { margin-top: 128px; font-family: var(--display); font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -2.5px; }
