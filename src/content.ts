@@ -92,17 +92,17 @@ export const STEPS: Step[] = [
     bg: LIGHT,
   },
   {
-    id: "composicao-do-harness",
-    scene: "harness",
-    build: 1,
-    label: "A composição do harness",
-    bg: LIGHT,
-  },
-  {
     id: "harness",
     scene: "harness",
     build: 0,
     label: "Harness e Design System",
+    bg: LIGHT,
+  },
+  {
+    id: "composicao-do-harness",
+    scene: "harness",
+    build: 1,
+    label: "A composição do harness",
     bg: LIGHT,
   },
   {
