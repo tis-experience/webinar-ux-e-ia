@@ -2516,7 +2516,7 @@ export function StepsScene() {
         ))}
       </div>
       <motion.p className="w-steps-note" {...fade(2.6)}>
-        A IA fez o trabalho pesado de produção, e a história, o guião, a pose, o tom e a edição final foram escolhas humanas.
+        A IA fez o trabalho pesado de produção e as escolhas criativas foram todas humanas.
       </motion.p>
     </section>
   );
