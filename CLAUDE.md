@@ -22,7 +22,17 @@ Valem para qualquer texto: textos dos slides, documentação, commits e comentá
   dura 1 s. As durações não são escaladas.
 - `src/styles.css`: todos os estilos, com o prefixo `w-`.
 - `src/assets`: fontes Bronkoh, fotos dos oradores e a captura da documentação do Design System, já em WebP e na
-  dimensão em que aparecem.
+  dimensão em que aparecem. `src/assets/sara` tem as imagens do Tema 2 (casos Somos TIS, Jardim da Luma e Cleo),
+  tiradas do deck do bloco da Sara.
+- `public/videos`: os vídeos dos casos, em H.264. Ficam fora do `index.html` (seriam dezenas de MB embutidos) e são
+  copiados para `dist/videos`; ao publicar o artefacto, enviam-se com o mesmo caminho. Os três sem som passam sozinhos
+  e em ciclo; o da Cleo tem som e começa com um clique.
+
+## Tema 2
+
+O bloco da Sara Guerreiro ("Da prototipagem ao produto") vai do passo `tema-2` a `para-levar`. As perguntas do
+moderador usam a cena das perguntas com fundo azul-escuro `#143b8b` e símbolo `#0d2c6c`. Os textos seguem o deck que
+a Sara enviou, passados para a grafia pré-Acordo e para as regras de escrita acima.
 
 ## Direcção visual e animação
 

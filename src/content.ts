@@ -12,6 +12,8 @@ export type Step = {
 };
 
 const LIGHT = "#f1f5f9";
+/** Fundo das perguntas do moderador no bloco da Sara (Tema 2). */
+const NAVY = "#143b8b";
 
 export const STEPS: Step[] = [
   {
@@ -144,17 +146,116 @@ export const STEPS: Step[] = [
     dark: true,
   },
   {
-    id: "demonstracao",
+    id: "criatividade",
     scene: "pergunta",
-    build: 4,
-    label: "Demonstração prática",
-    bg: "#143b8b",
+    build: 5,
+    label: "Como continuar criativos com IA?",
+    bg: NAVY,
+    dark: true,
+  },
+  {
+    id: "tres-regras",
+    scene: "regras",
+    label: "Três regras para não ficarmos todos iguais",
+    bg: LIGHT,
+  },
+  {
+    id: "processo-criativo",
+    scene: "pergunta",
+    build: 6,
+    label: "Como funciona o processo criativo?",
+    bg: NAVY,
+    dark: true,
+  },
+  {
+    id: "inspiracao-e-ferramentas",
+    scene: "criativo",
+    label: "Inspiração, tendências e ferramentas",
+    bg: LIGHT,
+  },
+  {
+    id: "diferencial",
+    scene: "diferencial",
+    label: "O diferencial de inovação",
+    bg: LIGHT,
+  },
+  {
+    id: "casos-na-pratica",
+    scene: "pergunta",
+    build: 7,
+    label: "Como é que isto funciona na prática?",
+    bg: NAVY,
+    dark: true,
+  },
+  {
+    id: "tres-casos",
+    scene: "casos",
+    label: "Três casos reais da TIS",
+    bg: LIGHT,
+  },
+  {
+    id: "somos-tis",
+    scene: "video",
+    build: 0,
+    label: "Caso 1: Somos TIS",
+    bg: LIGHT,
+  },
+  {
+    id: "agente-de-rh",
+    scene: "video",
+    build: 1,
+    label: "Caso 1: o agente de RH",
+    bg: LIGHT,
+  },
+  {
+    id: "somos-tis-inovacao",
+    scene: "inovacao",
+    label: "Caso 1: o que tem de inovador",
+    bg: LIGHT,
+  },
+  {
+    id: "jardim-da-luma",
+    scene: "video",
+    build: 2,
+    label: "Caso 2: Jardim da Luma",
+    bg: LIGHT,
+  },
+  {
+    id: "luma-ia",
+    scene: "luma",
+    label: "Caso 2: a IA na Luma",
+    bg: LIGHT,
+  },
+  {
+    id: "cleo",
+    scene: "video",
+    build: 3,
+    label: "Caso 3: Cleo",
+    bg: LIGHT,
+  },
+  {
+    id: "cleo-passos",
+    scene: "passos",
+    label: "Caso 3: como foi feita a Cleo",
+    bg: LIGHT,
+  },
+  {
+    id: "licoes",
+    scene: "licoes",
+    label: "Três casos, três lições",
+    bg: LIGHT,
+  },
+  {
+    id: "para-levar",
+    scene: "levar",
+    label: "Para levar daqui",
+    bg: "#0065ed",
     dark: true,
   },
   {
     id: "perguntas",
     scene: "pergunta",
-    build: 5,
+    build: 4,
     label: "Perguntas",
     bg: "#0065ed",
     dark: true,
@@ -173,9 +274,11 @@ export const QUESTIONS = [
   { kicker: "Tema 1", lines: ["Como entregar melhores", "experiências num", "mundo acelerado?"], accent: "#8ec6fd", mark: "#0050da" },
   { kicker: "Do processo à prática", lines: ["Como se constrói", "com IA na prática?"], accent: "#94a3b8", mark: "#475569" },
   { kicker: "Os resultados práticos", lines: ["Que ganhos práticos", "se obtêm com", "este processo?"], accent: "#94a3b8", mark: "#475569" },
-  { kicker: "Tema 2", lines: ["Como inovar num", "mundo acelerado?"], accent: "#8ec6fd", mark: "#0050da" },
-  { kicker: "Ao vivo", lines: ["Demonstração", "prática"], lead: "Inovação num mundo acelerado, ao vivo.", accent: "#bcdcfe", mark: "#1f4fb8", live: true },
+  { kicker: "Tema 2", lines: ["Como inovar num", "mundo acelerado?"], lead: "Da prototipagem ao produto", accent: "#8ec6fd", mark: "#0050da" },
   { kicker: "Webinar UX e IA", lines: ["Perguntas"], lead: "Envie a sua pergunta pelo chat. Os oradores respondem a seguir.", accent: "#eef6ff", mark: "#0050da", chat: true },
+  { kicker: "Criatividade com IA", lines: ["Como continuar", "criativos com IA?"], accent: "#8ec6fd", mark: "#0d2c6c" },
+  { kicker: "Processo criativo", lines: ["Como funciona o", "processo criativo?"], accent: "#8ec6fd", mark: "#0d2c6c" },
+  { kicker: "Casos reais da TIS", lines: ["Como é que isto", "funciona na prática?"], accent: "#8ec6fd", mark: "#0d2c6c" },
 ];
 
 export const SPEAKERS = [
@@ -285,4 +388,175 @@ export const VALIDATION_CARDS = [
   { icon: "users", title: "Testar com pessoas reais", text: "Observar como usam o produto em situações reais." },
   { icon: "star", title: "Comparar alternativas", text: "Várias versões testadas lado a lado, para escolher a melhor." },
   { icon: "chart", title: "Decidir pelos dados", text: "As métricas de uso orientam cada decisão." },
+];
+
+/* ── Tema 2: a parte da Sara (da prototipagem ao produto) ─────────────── */
+
+export const CREATIVE_RULES = [
+  { n: "01", title: "Pensa antes de pedir", text: "Esboça ou define a ideia antes do primeiro prompt, para que o ponto de partida seja teu." },
+  { n: "02", title: "Usa a IA para abrir", text: "Pede vários caminhos de uma vez e explora primeiro os mais inesperados." },
+  { n: "03", title: "Fecha com critério", text: "A IA dá opções, mas quem decide é o teu gosto, o contexto e as pessoas para quem crias." },
+];
+
+/** O quadro do processo criativo. `used` marca as ferramentas usadas nos casos que se mostram a seguir. */
+export const CREATIVE_COLUMNS: { icon: string; title: string; sub: string; rows: { label: string; items: { name: string; used?: boolean }[] }[] }[] = [
+  {
+    icon: "eye",
+    title: "Inspiração",
+    sub: "Sugestões de referências",
+    rows: [
+      { label: "Apps e interfaces", items: [{ name: "Mobbin" }, { name: "Refero" }] },
+      { label: "Visual e branding", items: [{ name: "Dribbble" }, { name: "Behance" }, { name: "Pinterest" }] },
+      { label: "Sites e motion", items: [{ name: "Awwwards" }, { name: "Recent" }] },
+      { label: "Cor e tipografia", items: [{ name: "Coolors" }, { name: "Typewolf" }] },
+    ],
+  },
+  {
+    icon: "trend",
+    title: "Tendências",
+    sub: "Sugestões de pesquisas",
+    rows: [
+      { label: "Diárias", items: [{ name: "Muzli" }, { name: "LinkedIn" }] },
+      { label: "Semanais", items: [{ name: "Product Hunt" }, { name: "Newsletters" }] },
+      { label: "Mensais", items: [{ name: "Nielsen Norman Group" }] },
+      { label: "Todos os anos", items: [{ name: "Relatórios" }, { name: "Web Summit" }] },
+    ],
+  },
+  {
+    icon: "sparkles",
+    title: "Ferramentas de IA",
+    sub: "Sugestões por tipo",
+    rows: [
+      { label: "Ideias e escrita", items: [{ name: "ChatGPT", used: true }, { name: "Claude", used: true }, { name: "Gemini" }] },
+      { label: "Imagem", items: [{ name: "Firefly", used: true }, { name: "Midjourney" }, { name: "Nano Banana", used: true }] },
+      { label: "Interface e código", items: [{ name: "Figma Make", used: true }, { name: "Claude Code", used: true }, { name: "Lovable" }] },
+      { label: "Vídeo e voz", items: [{ name: "Kling", used: true }, { name: "Higgsfield" }, { name: "ElevenLabs", used: true }] },
+    ],
+  },
+];
+
+export const DIFFERENTIALS = [
+  { icon: "heart", title: "Conhecer as pessoas e os seus desafios", text: "A realidade de quem vai usar, aqui, em Angola" },
+  { icon: "refresh", title: "Velocidade de aprendizagem", text: "Mais voltas ao ciclo de prototipar e testar" },
+  { icon: "compass", title: "Critério humano", text: "Saber o que vale a pena construir, e como" },
+];
+
+/** Ferramentas que vão passando no resultado, para mostrar que mudam todos os meses. */
+export const PASSING_TOOLS = ["ChatGPT", "Midjourney", "Figma Make", "Gemini", "Kling", "Lovable", "Claude", "Nano Banana"];
+
+export const CASES = [
+  { n: 1, name: "Somos TIS", role: "A IA que responde", text: "Portal de Pessoas & Cultura com um agente de RH", step: "somos-tis" },
+  { n: 2, name: "Jardim da Luma", role: "A IA que acompanha", text: "Jogo educativo do Outubro Rosa com uma assistente", step: "jardim-da-luma" },
+  { n: 3, name: "Cleo", role: "A IA que dá rosto e voz", text: "Apresentadora virtual da Academia TIS", step: "cleo" },
+];
+
+/** Os ecrãs com vídeo. Os três primeiros não têm som e passam sozinhos; o da Cleo tem som e começa com um clique. */
+export const VIDEO_CASES = [
+  {
+    kicker: "Caso 1 · Plataforma Somos TIS",
+    title: "Pessoas & Cultura: tudo o que é RH, num só lugar",
+    url: "somostis.com",
+    video: "somos-tis",
+    ratio: 1440 / 900,
+    caption: "Gravação de ecrã do protótipo, com dados fictícios · 30 s",
+    autoplay: true,
+    facts: [
+      { label: "Para quem", text: "Todos os colaboradores da TIS, com a conta Microsoft da empresa" },
+      { label: "O que reúne", text: "Chat, perguntas frequentes, notícias, eventos e documentos" },
+      { label: "Como foi feito", text: "Desenhado e construído com IA no Figma Make, do conceito à plataforma sem escrever o código à mão" },
+    ],
+  },
+  {
+    kicker: "Caso 1 · Integração com IA",
+    title: "Um agente de RH que responde e ajuda a agir",
+    url: "somostis.com",
+    video: "agente-rh",
+    ratio: 1440 / 900,
+    caption: "Gravação de ecrã do protótipo · 29 s",
+    autoplay: true,
+    cards: [
+      { icon: "book-open", title: "Responde com fontes", text: "Usa os regulamentos oficiais e indica o documento de onde vem a resposta" },
+      { icon: "link", title: "Ligado ao Odoo", text: "Saldo de férias e pedidos, sem sair da conversa" },
+      { icon: "shield", title: "Regras claras", text: "Nunca decide, nunca mostra dados de outra pessoa e passa os temas sensíveis ao RH" },
+    ],
+  },
+  {
+    kicker: "Caso 2 · Plataforma gaming Luma",
+    title: "Jardim da Luma: aprender a cuidar, a brincar",
+    url: "luma.somostis.com",
+    video: "jardim-da-luma",
+    ratio: 16 / 9,
+    caption: "Animações do próprio jogo · 33 s",
+    autoplay: true,
+    facts: [
+      { label: "O que é", text: "A iniciativa Outubro Rosa da TIS, em forma de jogo" },
+      { label: "Como funciona", text: "12 descobertas, e cada uma dá uma pétala ao teu jardim", petals: true },
+      { label: "Jogos simples", text: "Pares, puzzles e ordenar passos, sem pressa nem penalizações" },
+      { label: "Uma canção nossa", text: "«O teu lugar é aqui», uma kizomba para as mulheres da TIS" },
+    ],
+  },
+  {
+    kicker: "Caso 3 · Vídeo Cleo",
+    title: "Cleo, a apresentadora virtual da Academia TIS",
+    url: "",
+    video: "cleo",
+    ratio: 1600 / 892,
+    caption: "Vídeo com som · 1 min 27 s",
+    autoplay: false,
+    facts: [
+      { label: "O que é", text: "Uma personagem criada com IA para apresentar a Academia TIS" },
+      { label: "Onde aparece", text: "No lançamento da Academia, em ecrã e em vídeo" },
+      { label: "Com transparência", text: "O vídeo indica sempre «Gerado por IA»: quem vê tem o direito de saber que a Cleo não é uma pessoa real" },
+    ],
+  },
+];
+
+export const PORTAL_POINTS = [
+  { title: "Uma porta única", text: "Tudo o que é RH num só lugar, em vez de e-mails e pastas partilhadas" },
+  { title: "Fala como as pessoas falam", text: "Linguagem simples, sem juridiquês" },
+  { title: "Pergunta antes de agir", text: "Confirma sempre com o colaborador antes de submeter um pedido" },
+];
+
+export const EXPERIMENTS = [
+  { image: "quem-sou-eu", title: "Reconhecimento facial experimental", text: "A assistente tenta adivinhar quem é a pessoa, e cada resposta ajuda a afinar o sistema antes de o levar a eventos e totens." },
+  { image: "estudio-tis", title: "Estúdio TIS & Nano Banana", text: "Ajusta a iluminação, recorta o retrato com protecção, aplica a moldura TIS ou transforma-o com o modelo Nano Banana." },
+];
+
+export const LUMA_COLUMNS = [
+  {
+    title: "Integração com IA",
+    items: [
+      { title: "A Luma é uma assistente educativa", text: "Funciona com o Gemini, da Google, e explica cada tema «de outra forma» quando é preciso" },
+      { title: "Só usa conteúdos aprovados", text: "Responde a partir do que foi publicado e revisto" },
+      { title: "Conversa privada e temporária", text: "Não entra nos relatórios de RH e pede para evitar dados pessoais" },
+    ],
+  },
+  {
+    title: "O que tem de inovador",
+    items: [
+      { title: "Jogo com propósito", text: "Aprender a cuidar, sem competir nem ser avaliado" },
+      { title: "Revisão clínica", text: "Cada conteúdo é revisto antes de publicar, e cada alteração fica registada" },
+      { title: "Privacidade desde o início", text: "Os gestores só vêem métricas de grupo, e os grupos pequenos ficam ocultos" },
+    ],
+  },
+];
+
+export const CLEO_STEPS = [
+  { title: "Criar a personagem", text: "Definir o aspecto, o estilo e a personalidade da Cleo", tool: "IA de imagem" },
+  { title: "Ajustar", text: "Tirar o fundo, mudar a pose e corrigir os detalhes", tool: "Firefly · Gemini" },
+  { title: "Criar o palco", text: "Testar a Cleo no cenário com a marca da Academia TIS", tool: "ChatGPT" },
+  { title: "Dar vida", text: "Animar a personagem e sincronizar os lábios com a voz", tool: "Kling AI" },
+  { title: "Voz e montagem", text: "Juntar a voz-off, a música e o ritmo final", tool: "Premiere Pro" },
+];
+
+export const LESSONS = [
+  { icon: "users", title: "Começar pelas pessoas", text: "Um colaborador com uma dúvida de RH, uma colega no Outubro Rosa, uma Academia que precisava de um rosto.", tag: "Somos TIS · Luma · Cleo" },
+  { icon: "layers", title: "Prototipar para aprender", text: "Plataformas e vídeos a funcionar desde cedo, testados e afinados com quem os vai usar.", tag: "Figma Make · Kling AI" },
+  { icon: "shield", title: "Critério e cuidado", text: "Regras para o agente, revisão clínica na Luma e «Gerado por IA» na Cleo.", tag: "Confiança antes de velocidade" },
+];
+
+export const TAKEAWAYS = [
+  "O protótipo é uma pergunta, e quanto mais cedo a fizermos, melhor.",
+  "A IA abre caminhos, mas são as pessoas que os fecham com critério.",
+  "O diferencial está em conhecer as pessoas e aprender depressa.",
 ];

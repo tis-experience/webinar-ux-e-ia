@@ -2,22 +2,34 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type 
 import { AnimatePresence, motion, useAnimate, useMotionValue, useSpring, useTransform } from "motion/react";
 import {
   Book,
+  BookOpen,
   ChartColumn,
   Check,
   CircleCheck,
   Code,
+  Compass,
   Database,
+  Eye,
   FileText,
   FlaskConical,
   FolderClosed,
+  Heart,
   KeyRound,
+  Layers,
+  Link2,
   Maximize2,
   Minimize2,
+  Pause,
+  Play,
   Puzzle,
+  RefreshCw,
   Scale,
   Search,
+  ShieldCheck,
   SlidersHorizontal,
+  Sparkles,
   Star,
+  TrendingUp,
   TriangleAlert,
   Users,
   Wrench,
@@ -28,21 +40,47 @@ import logoPaths from "./imports/logo-mark";
 import photoMarcell from "./assets/equipa-marcell.webp";
 import photoSara from "./assets/equipa-sara.webp";
 import dsButtonDocs from "./assets/ds-button-docs.webp";
+import casoSomos from "./assets/sara/caso-somos.webp";
+import casoLuma from "./assets/sara/caso-luma.webp";
+import casoCleo from "./assets/sara/caso-cleo.webp";
+import posterSomos from "./assets/sara/poster-somos.webp";
+import posterAgente from "./assets/sara/poster-agente.webp";
+import posterLuma from "./assets/sara/poster-luma.webp";
+import posterCleo from "./assets/sara/poster-cleo.webp";
+import quemSouEu from "./assets/sara/quem-sou-eu.webp";
+import estudioTis from "./assets/sara/estudio-tis.webp";
+import cleo1 from "./assets/sara/cleo-1.webp";
+import cleo2 from "./assets/sara/cleo-2.webp";
+import cleo3 from "./assets/sara/cleo-3.webp";
+import cleo4 from "./assets/sara/cleo-4.webp";
+import cleo5 from "./assets/sara/cleo-5.webp";
 import {
   AGENTS_LINES,
   APPROACHES,
   BENEFITS,
+  CASES,
+  CLEO_STEPS,
+  CREATIVE_COLUMNS,
+  CREATIVE_RULES,
+  DIFFERENTIALS,
+  EXPERIMENTS,
   FRONTS,
   HARNESS_ITEMS,
+  LESSONS,
+  LUMA_COLUMNS,
   PANELS,
+  PASSING_TOOLS,
+  PORTAL_POINTS,
   PHASES,
   PROCESS_HEADS,
   QUESTIONS,
   RULES,
   SOURCE_ITEMS,
   SPEAKERS,
+  TAKEAWAYS,
   TOKENS,
   VALIDATION_CARDS,
+  VIDEO_CASES,
 } from "./content";
 import { CountUp, EASE, MaskLine, PACE, STILL, Swap, fade, rise, spring, tween, useAfter } from "./fx";
 
@@ -64,6 +102,16 @@ const ICONS: Record<string, typeof Search> = {
   scale: Scale,
   puzzle: Puzzle,
   flask: FlaskConical,
+  eye: Eye,
+  trend: TrendingUp,
+  sparkles: Sparkles,
+  heart: Heart,
+  refresh: RefreshCw,
+  compass: Compass,
+  "book-open": BookOpen,
+  link: Link2,
+  shield: ShieldCheck,
+  layers: Layers,
 };
 
 function Icon({ name, size = 30, stroke = 2.2 }: { name: string; size?: number; stroke?: number }) {
@@ -287,7 +335,6 @@ export function QuestionScene({ index }: { index: number }) {
         <Swap>
           <motion.div key={index} exit={exit}>
             <motion.p className="w-kicker" style={{ color: q.accent, fontSize: 22, letterSpacing: 3 }} {...fade(0.1)}>
-              {q.live && <i className="w-live" aria-hidden />}
               {q.kicker}
             </motion.p>
             <h1 className="w-question-title">
@@ -1854,6 +1901,626 @@ export function HandoffScene() {
             </motion.p>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Tema 2: da prototipagem ao produto (a parte da Sara) ─────────────── */
+
+/** Revela um bloco inteiro da esquerda para a direita (mesmo movimento das barras da validação). */
+const reveal = (delay: number, dur = 1, radius = 20) =>
+  STILL
+    ? {}
+    : {
+        initial: { clipPath: `inset(0% 100% 0% 0% round ${radius}px)` },
+        animate: { clipPath: `inset(0% 0% 0% 0% round ${radius}px)` },
+        transition: { duration: dur, delay: delay * PACE, ease: [0.45, 0, 0.2, 1] as const },
+      };
+
+/** Traço que se desenha da esquerda para a direita. */
+function Stroke({ d, delay, dur = 0.9, ...rest }: { d: string; delay: number; dur?: number } & Record<string, unknown>) {
+  return (
+    <motion.path
+      d={d}
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={STILL ? false : { pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: dur, delay: delay * PACE, ease: "easeInOut" }}
+      {...rest}
+    />
+  );
+}
+
+/** Pensar antes de pedir: um esboço à mão que só depois passa para o pedido à IA. */
+function SketchArt({ delay }: { delay: number }) {
+  const ink = { stroke: "#334155", strokeWidth: 3 };
+  return (
+    <svg viewBox="0 0 432 150" className="w-crule-art" aria-hidden>
+      <Stroke d="M30 22 Q120 16 212 21 Q216 78 210 130 Q120 135 27 128 Q23 76 30 22 Z" delay={delay} dur={1.2} {...ink} />
+      <Stroke d="M48 44 Q98 40 150 44" delay={delay + 1.1} {...ink} />
+      <Stroke d="M48 66 Q84 64 120 67 Q122 88 119 110 Q84 112 47 109 Q46 88 48 66" delay={delay + 1.6} {...ink} />
+      <Stroke d="M138 74 Q164 72 192 75" delay={delay + 2.2} {...ink} />
+      <Stroke d="M138 94 Q160 93 184 95" delay={delay + 2.5} {...ink} />
+      <Stroke d="M236 76 L292 76 M280 66 L292 76 L280 86" delay={delay + 3} stroke="#0065ed" strokeWidth={3} />
+      <motion.rect x={306} y={52} width={110} height={48} rx={24} fill="#ffffff" stroke="#cbd5e1" strokeWidth={2} {...fade(delay + 3.4)} />
+      <motion.rect x={326} y={66} width={3} height={20} rx={1.5} fill="#0065ed" className="w-caret" {...fade(delay + 3.6)} />
+    </svg>
+  );
+}
+
+const FAN_Y = [16, 46, 76, 106, 136];
+
+/** Abrir com a IA: de um ponto saem vários caminhos, e o mais inesperado fica em destaque. */
+function OpenArt({ delay }: { delay: number }) {
+  return (
+    <svg viewBox="0 0 432 150" className="w-crule-art" aria-hidden>
+      {FAN_Y.map((y, n) => (
+        <Stroke key={y} d={`M40 76 C150 76 250 ${y} 392 ${y}`} delay={delay + 0.4 + n * 0.25} dur={1.3} stroke={n === 0 ? "#0065ed" : "#94a3b8"} strokeWidth={n === 0 ? 4 : 3} />
+      ))}
+      {FAN_Y.map((y, n) => (
+        <motion.circle key={y} cx={400} cy={y} r={n === 0 ? 9 : 7} fill={n === 0 ? "#0065ed" : "#cbd5e1"} {...fade(delay + 2.4 + n * 0.25, 0.4)} />
+      ))}
+      <circle cx={400} cy={FAN_Y[0]} r={9} fill="none" stroke="#0065ed" strokeWidth={2} className="w-ping-dot" />
+      <motion.circle cx={40} cy={76} r={10} fill="#0f172a" {...fade(delay, 0.4)} />
+    </svg>
+  );
+}
+
+/** Fechar com critério: os caminhos convergem num só. */
+function CloseArt({ delay }: { delay: number }) {
+  return (
+    <svg viewBox="0 0 432 150" className="w-crule-art" aria-hidden>
+      {FAN_Y.map((y, n) => (
+        <motion.circle key={y} cx={32} cy={y} r={7} fill="#8ec6fd" {...fade(delay + n * 0.15, 0.4)} />
+      ))}
+      {FAN_Y.map((y, n) => (
+        <Stroke key={y} d={`M32 ${y} C150 ${y} 250 76 384 76`} delay={delay + 0.8 + n * 0.15} dur={1.3} stroke="#8ec6fd" strokeWidth={3} strokeOpacity={0.75} />
+      ))}
+      <motion.circle cx={396} cy={76} r={13} fill="#ffffff" {...fade(delay + 2.6, 0.4)} />
+      <circle cx={396} cy={76} r={13} fill="none" stroke="#ffffff" strokeWidth={2} className="w-ping-dot" />
+    </svg>
+  );
+}
+
+export function RulesScene() {
+  const [runs, setRuns] = useState([0, 0, 0]);
+  const replay = (n: number) => setRuns((r) => r.map((v, i) => (i === n ? v + 1 : v)));
+  const arts = [SketchArt, OpenArt, CloseArt];
+
+  return (
+    <section className="w-scene">
+      <Head kicker="Criatividade com IA" title="Três regras para não ficarmos todos iguais" />
+      <div className="w-crules">
+        {CREATIVE_RULES.map((rule, n) => {
+          const Art = arts[n];
+          const first = runs[n] === 0;
+          return (
+            <motion.button
+              type="button"
+              key={rule.n}
+              className="w-crule"
+              data-strong={n === 2}
+              aria-label={`${rule.title}: repetir a animação`}
+              onClick={() => replay(n)}
+              initial={STILL ? false : { opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              whileHover={{ y: -6 }}
+              transition={spring(0.4 + n * 0.5, 80, 16)}
+            >
+              <span className="w-crule-n">{rule.n}</span>
+              <span className="w-crule-stage" key={runs[n]}>
+                <Art delay={first ? 1 + n * 0.5 : 0} />
+              </span>
+              <h3>{rule.title}</h3>
+              <p>{rule.text}</p>
+            </motion.button>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+export function CreativeScene() {
+  const [focus, setFocus] = useState<number | null>(null);
+
+  return (
+    <section className="w-scene">
+      <Head kicker="Processo criativo" title="Inspiração, tendências e ferramentas" />
+      <motion.p className="w-legend" {...fade(3.2)}>
+        <i aria-hidden />A azul, as ferramentas usadas nos casos que vamos ver
+      </motion.p>
+      <div className="w-cols">
+        {CREATIVE_COLUMNS.map((col, n) => (
+          <motion.button
+            type="button"
+            key={col.title}
+            className="w-col"
+            aria-pressed={focus === n}
+            onClick={() => setFocus(focus === n ? null : n)}
+            initial={STILL ? false : { opacity: 0, x: -60 }}
+            animate={{ opacity: focus === null || focus === n ? 1 : 0.35, x: 0, scale: focus === n ? 1.03 : 1 }}
+            transition={{ opacity: { duration: 0.4 }, scale: { duration: 0.4, ease: EASE }, x: spring(0.3 + n * 0.45, 80, 16) }}
+          >
+            <span className="w-col-head">
+              <span className="w-ben-bub">
+                <Icon name={col.icon} size={28} />
+              </span>
+              <span>
+                <b>{col.title}</b>
+                <small>{col.sub}</small>
+              </span>
+            </span>
+            <span className="w-col-body">
+              {col.rows.map((row, r) => (
+                <motion.span key={row.label} className="w-col-row" {...rise(0.9 + n * 0.45 + r * 0.18, 14)}>
+                  <small>{row.label}</small>
+                  <span>
+                    {row.items.map((item, k) => (
+                      <span key={item.name}>
+                        {k > 0 && <i className="w-sep"> · </i>}
+                        <span data-used={item.used || undefined}>{item.name}</span>
+                      </span>
+                    ))}
+                  </span>
+                </motion.span>
+              ))}
+            </span>
+          </motion.button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function DifferentialScene() {
+  const [tool, setTool] = useState(0);
+
+  useEffect(() => {
+    if (STILL) return undefined;
+    const timer = window.setInterval(() => setTool((t) => (t + 1) % PASSING_TOOLS.length), 2600);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="w-scene">
+      <Head kicker="Processo criativo" title="O diferencial de inovação" />
+      <motion.p className="w-dif-lead" {...fade(0.4)}>
+        Lembram-se da pergunta do início? Se as ferramentas são as mesmas, a diferença está em três coisas que se somam.
+      </motion.p>
+      <div className="w-difs">
+        {DIFFERENTIALS.map((item, n) => (
+          <div key={item.title} className="w-dif-slot">
+            {n > 0 && (
+              <motion.span className="w-op" initial={STILL ? false : { scale: 0 }} animate={{ scale: 1 }} transition={spring(1.1 + n * 0.5, 200, 12)}>
+                +
+              </motion.span>
+            )}
+            <motion.div
+              className="w-dif"
+              initial={STILL ? false : { opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={spring(0.8 + n * 0.5, 80, 16)}
+            >
+              <span className="w-ben-bub" data-anim={item.icon}>
+                <Icon name={item.icon} size={30} />
+              </span>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </motion.div>
+          </div>
+        ))}
+      </div>
+      <motion.span className="w-eq" initial={STILL ? false : { scale: 0 }} animate={{ scale: 1 }} transition={spring(2.6, 200, 12)}>
+        =
+      </motion.span>
+      <motion.div className="w-impact" {...reveal(3)}>
+        <div>
+          <h3>Inovação com impacto</h3>
+          <p>A ferramenta muda todos os meses, mas estas três coisas ficam.</p>
+        </div>
+        <div className="w-tool">
+          <small>A ferramenta deste mês</small>
+          <span className="w-tool-pill">
+            <Swap mode="popLayout">
+              <motion.b
+                key={tool}
+                initial={STILL ? false : { y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{ duration: 0.5, ease: EASE }}
+              >
+                {PASSING_TOOLS[tool]}
+              </motion.b>
+            </Swap>
+          </span>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+const CASE_IMAGES = [casoSomos, casoLuma, casoCleo];
+
+export function CasesScene() {
+  return (
+    <section className="w-scene">
+      <Head kicker="Casos reais da TIS" title="Três casos, três formas de pôr a IA a trabalhar" />
+      <div className="w-cases">
+        {CASES.map((item, n) => (
+          <motion.a
+            key={item.name}
+            href={`#${item.step}`}
+            className="w-case"
+            aria-label={`Abrir o caso ${item.n}: ${item.name}`}
+            initial={STILL ? false : { opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={spring(0.4 + n * 0.45, 80, 16)}
+          >
+            <span className="w-case-img">
+              <img src={CASE_IMAGES[n]} alt="" />
+            </span>
+            <span className="w-case-txt">
+              <span className="w-case-n">{item.n}</span>
+              <span>
+                <b>{item.name}</b>
+                <em>{item.role}</em>
+                <small>{item.text}</small>
+              </span>
+            </span>
+          </motion.a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** Doze pétalas que se vão preenchendo umas atrás das outras, como as descobertas do jogo. */
+function Petals() {
+  return (
+    <svg viewBox="-50 -50 100 100" className="w-petals" aria-hidden>
+      {Array.from({ length: 12 }, (_, n) => (
+        <ellipse key={n} cx={0} cy={-27} rx={9} ry={17} transform={`rotate(${n * 30})`} style={{ animationDelay: `${n * 0.5}s` }} />
+      ))}
+      <circle r={10} fill="#0050da" />
+    </svg>
+  );
+}
+
+const POSTERS: Record<string, string> = { "somos-tis": posterSomos, "agente-rh": posterAgente, "jardim-da-luma": posterLuma, cleo: posterCleo };
+const VIDEO_W = 880;
+const BAR_H = 48;
+
+/** Vídeo de um caso: os que não têm som passam sozinhos; um clique pausa ou retoma. */
+function CaseVideo({ item }: { item: (typeof VIDEO_CASES)[number] }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const progress = useMotionValue(0);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return undefined;
+    video.muted = item.autoplay;
+    if (item.autoplay && !STILL) void video.play().catch(() => undefined);
+    let frame = 0;
+    const tick = () => {
+      if (video.duration) progress.set(video.currentTime / video.duration);
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [item, progress]);
+
+  const toggle = () => {
+    const video = ref.current;
+    if (!video) return;
+    if (video.paused) void video.play().catch(() => undefined);
+    else video.pause();
+  };
+
+  return (
+    <motion.div key={item.video} className="w-vid" role="button" tabIndex={0} aria-label={playing ? "Pausar o vídeo" : "Reproduzir o vídeo"} onClick={toggle} initial={STILL ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.3 } }} transition={{ duration: 0.5 }}>
+      <video
+        ref={ref}
+        src={`./videos/${item.video}.mp4`}
+        poster={POSTERS[item.video]}
+        playsInline
+        loop={item.autoplay}
+        preload="auto"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
+      <AnimatePresence>
+        {!playing && (
+          <motion.span className="w-vid-play" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.3 }}>
+            <Play size={44} fill="currentColor" strokeWidth={0} aria-hidden />
+          </motion.span>
+        )}
+      </AnimatePresence>
+      <span className="w-vid-state" data-on={playing}>
+        {playing ? <Pause size={18} fill="currentColor" strokeWidth={0} aria-hidden /> : <Play size={18} fill="currentColor" strokeWidth={0} aria-hidden />}
+      </span>
+      <motion.i className="w-vid-progress" style={{ scaleX: progress }} />
+    </motion.div>
+  );
+}
+
+export function VideoScene({ index }: { index: number }) {
+  const item = VIDEO_CASES[index];
+  const height = Math.round(VIDEO_W / item.ratio) + (item.url ? BAR_H : 0);
+
+  return (
+    <section className="w-scene">
+      <Head kicker={item.kicker} title={item.title} k={String(index)} />
+      <motion.div
+        className="w-vframe"
+        initial={STILL ? false : { opacity: 0, x: -60, height }}
+        animate={{ opacity: 1, x: 0, height }}
+        transition={{ opacity: tween(0.6, 0.3), x: spring(0.3, 80, 16), height: tween(0.6) }}
+      >
+        {item.url && (
+          <span className="w-vbar">
+            <i />
+            <i />
+            <i />
+            <Swap>
+              <motion.a key={item.url} className="w-url" href={`https://${item.url}`} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} {...fade(0.6)} exit={exit}>
+                {item.url}
+              </motion.a>
+            </Swap>
+          </span>
+        )}
+        <span className="w-vbody">
+          <AnimatePresence initial={false}>
+            <CaseVideo key={item.video} item={item} />
+          </AnimatePresence>
+        </span>
+      </motion.div>
+      <Swap>
+        <motion.p key={item.caption} className="w-vcap" style={{ top: 290 + height + 16 }} {...fade(1.2)} exit={exit}>
+          {item.caption}
+        </motion.p>
+      </Swap>
+      <div className="w-vside">
+        <Swap>
+          <motion.div key={index} exit={exit}>
+            {"facts" in item && item.facts && (
+              <div className="w-facts">
+                {item.facts.map((fact, n) => (
+                  <motion.div key={fact.label} className="w-fact" {...rise(0.7 + n * 0.25, 20)}>
+                    <p className="w-lbl">
+                      {fact.label}
+                      {"petals" in fact && fact.petals && <Petals />}
+                    </p>
+                    <p>{fact.text}</p>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+            {"cards" in item && item.cards && (
+              <div className="w-vcards">
+                {item.cards.map((card, n) => (
+                  <motion.div key={card.title} className="w-ben" {...rise(0.6 + n * 0.25, 20)}>
+                    <span className="w-ben-bub">
+                      <Icon name={card.icon} size={28} />
+                    </span>
+                    <div>
+                      <h4>{card.title}</h4>
+                      <p>{card.text}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </Swap>
+      </div>
+    </section>
+  );
+}
+
+const EXPERIMENT_IMAGES: Record<string, string> = { "quem-sou-eu": quemSouEu, "estudio-tis": estudioTis };
+
+export function InnovationScene() {
+  const [zoom, setZoom] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (zoom === null) return undefined;
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setZoom(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [zoom]);
+
+  return (
+    <section className="w-scene">
+      <Head kicker="Caso 1 · O que tem de inovador" title="Do portal que informa ao portal que conversa" />
+      <div className="w-points">
+        {PORTAL_POINTS.map((point, n) => (
+          <motion.div key={point.title} className="w-point" {...rise(0.5 + n * 0.25, 20)}>
+            <span className="w-point-n">{String(n + 1).padStart(2, "0")}</span>
+            <div>
+              <h4>{point.title}</h4>
+              <p>{point.text}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      <motion.p className="w-lbl w-exp-k" {...fade(1.4)}>
+        Pensado para crescer: duas experiências
+      </motion.p>
+      <div className="w-exps">
+        {EXPERIMENTS.map((exp, n) => (
+          <motion.button
+            type="button"
+            key={exp.title}
+            className="w-exp"
+            aria-label={`Ampliar: ${exp.title}`}
+            onClick={() => setZoom(n)}
+            initial={STILL ? false : { opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={spring(1.5 + n * 0.45, 80, 16)}
+          >
+            <span className="w-exp-img">
+              <img src={EXPERIMENT_IMAGES[exp.image]} alt="" />
+              <span className="w-zoom" aria-hidden>
+                <Maximize2 size={20} />
+              </span>
+            </span>
+            <span className="w-exp-txt">
+              <b>{exp.title}</b>
+              <small>{exp.text}</small>
+            </span>
+          </motion.button>
+        ))}
+      </div>
+      <AnimatePresence>
+        {zoom !== null && (
+          <motion.div
+            key="zoom"
+            className="w-zoomview"
+            role="dialog"
+            aria-label={EXPERIMENTS[zoom].title}
+            onClick={() => setZoom(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.figure initial={{ scale: 0.92 }} animate={{ scale: 1 }} exit={{ scale: 0.92 }} transition={{ duration: 0.4, ease: EASE }}>
+              <img src={EXPERIMENT_IMAGES[EXPERIMENTS[zoom].image]} alt="" />
+              <figcaption>{EXPERIMENTS[zoom].title}</figcaption>
+            </motion.figure>
+            <span className="w-zoomview-x" aria-hidden>
+              <X size={28} />
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
+
+export function LumaScene() {
+  return (
+    <section className="w-scene">
+      <Head kicker="Caso 2 · IA e inovação" title="A Luma conversa, ensina e respeita" />
+      <div className="w-lumas">
+        {LUMA_COLUMNS.map((col, n) => (
+          <motion.div key={col.title} className="w-luma" data-strong={n === 0} {...reveal(0.4 + n * 0.6)}>
+            <p className="w-luma-head">
+              <span className="w-ben-bub">{n === 0 ? <AiMark size={28} color="#0065ed" /> : <Star size={28} strokeWidth={2.2} aria-hidden />}</span>
+              {col.title}
+            </p>
+            {col.items.map((item, k) => (
+              <motion.div key={item.title} className="w-luma-item" {...rise(1.2 + n * 0.6 + k * 0.2, 16)}>
+                <h4>{item.title}</h4>
+                <p>{item.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const CLEO_IMAGES = [cleo1, cleo2, cleo3, cleo4, cleo5];
+const STEP_X = 341;
+
+export function StepsScene() {
+  const [active, select] = useSelected(CLEO_STEPS.length, 3600, STILL ? 4 : 0, true);
+
+  return (
+    <section className="w-scene">
+      <Head kicker="Caso 3 · Como foi feita a Cleo" title="Da imagem ao vídeo, em cinco passos" />
+      <div className="w-steps">
+        <motion.i className="w-steps-line" initial={STILL ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={tween(1.6, 0.6)} />
+        <motion.i className="w-steps-fill" initial={false} animate={{ scaleX: active / (CLEO_STEPS.length - 1) }} transition={{ duration: 1.2, ease: EASE }} />
+        {CLEO_STEPS.map((item, n) => (
+          <motion.button
+            type="button"
+            key={item.title}
+            className="w-step"
+            style={{ left: n * STEP_X }}
+            data-on={n === active}
+            data-done={n < active}
+            aria-pressed={n === active}
+            onClick={() => select(n)}
+            {...rise(0.4 + n * 0.3, 24)}
+          >
+            <span className="w-step-img">
+              <img src={CLEO_IMAGES[n]} alt="" />
+            </span>
+            <span className="w-step-n">{n + 1}</span>
+            <b>{item.title}</b>
+            <small>{item.text}</small>
+            <em>{item.tool}</em>
+          </motion.button>
+        ))}
+      </div>
+      <motion.p className="w-steps-note" {...fade(2.6)}>
+        A IA fez o trabalho pesado de produção, e a história, o guião, a pose, o tom e a edição final foram escolhas humanas.
+      </motion.p>
+    </section>
+  );
+}
+
+export function LessonsScene() {
+  return (
+    <section className="w-scene">
+      <Head kicker="O que aprendemos" title="Três casos, três lições" />
+      <div className="w-lessons">
+        {LESSONS.map((item, n) => (
+          <motion.div key={item.title} className="w-lesson" data-strong={n === 2} {...reveal(0.4 + n * 0.5, 1, 20)}>
+            <span className="w-ben-bub">
+              <Icon name={item.icon} size={30} />
+            </span>
+            <div>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </div>
+            <em>{item.tag}</em>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function TakeawayScene() {
+  return (
+    <section className="w-scene">
+      <CoverMark rotate={-20} color="#0050da" size={600} style={{ right: 40, bottom: 60 }} />
+      <div className="w-takeaway">
+        <motion.p className="w-kicker" style={{ color: "#8ec6fd", fontSize: 22, letterSpacing: 3 }} {...fade(0.1)}>
+          Para levar daqui
+        </motion.p>
+        <ol>
+          {TAKEAWAYS.map((text, n) => (
+            <motion.li key={text} {...rise(0.4 + n * 0.3, 24)}>
+              <b>{String(n + 1).padStart(2, "0")}</b>
+              <span>{text}</span>
+            </motion.li>
+          ))}
+        </ol>
+        <h1 className="w-takeaway-title">
+          <MaskLine delay={1.8}>A IA acelera,</MaskLine>
+          <MaskLine delay={2}>as pessoas dão a direcção.</MaskLine>
+        </h1>
+        <motion.p className="w-takeaway-links" {...fade(2.8)}>
+          <a href="https://somostis.com" target="_blank" rel="noreferrer">
+            somostis.com
+          </a>
+          <i aria-hidden />
+          <a href="https://luma.somostis.com" target="_blank" rel="noreferrer">
+            luma.somostis.com
+          </a>
+        </motion.p>
       </div>
     </section>
   );
