@@ -495,7 +495,7 @@ export const VIDEO_CASES = [
       { label: "O que é", text: "A iniciativa Outubro Rosa da TIS, em forma de jogo" },
       { label: "Como funciona", text: "12 descobertas, e cada uma dá uma pétala ao teu jardim" },
       { label: "Jogos simples", text: "Pares, puzzles e ordenar passos, sem pressa nem penalizações" },
-      { label: "Uma canção nossa", text: "«O teu lugar é aqui», uma kizomba para as mulheres da TIS" },
+      { label: "Uma canção nossa", text: "“O teu lugar é aqui”, uma kizomba para as mulheres da TIS" },
     ],
   },
   {
@@ -509,7 +509,7 @@ export const VIDEO_CASES = [
     facts: [
       { label: "O que é", text: "Uma personagem criada com IA para apresentar a Academia TIS" },
       { label: "Onde aparece", text: "No lançamento da Academia, em ecrã e em vídeo" },
-      { label: "Com transparência", text: "O vídeo indica sempre «Gerado por IA»: quem vê tem o direito de saber que a Cleo não é uma pessoa real" },
+      { label: "Com transparência", text: "O vídeo indica sempre “Gerado por IA”: quem vê tem o direito de saber que a Cleo não é uma pessoa real" },
     ],
   },
 ];
@@ -523,7 +523,7 @@ export const LUMA_COLUMNS = [
   {
     title: "Integração com IA",
     items: [
-      { title: "A Luma é uma assistente educativa", text: "Funciona com o Gemini, da Google, e explica cada tema «de outra forma» quando é preciso" },
+      { title: "A Luma é uma assistente educativa", text: "Funciona com o Gemini, da Google, e explica cada tema “de outra forma” quando é preciso" },
       { title: "Só usa conteúdos aprovados", text: "Responde a partir do que foi publicado e revisto" },
       { title: "Conversa privada e temporária", text: "Não entra nos relatórios de RH e pede para evitar dados pessoais" },
     ],
@@ -549,7 +549,7 @@ export const CLEO_STEPS = [
 export const LESSONS = [
   { icon: "users", title: "Começar pelas pessoas", text: "Um colaborador com uma dúvida de RH, uma colega no Outubro Rosa, uma Academia que precisava de um rosto.", tag: "Somos TIS · Luma · Cleo" },
   { icon: "layers", title: "Prototipar para aprender", text: "Plataformas e vídeos a funcionar desde cedo, testados e afinados com quem os vai usar.", tag: "Figma Make · Kling AI" },
-  { icon: "shield", title: "Critério e cuidado", text: "Regras para o agente, revisão clínica na Luma e «Gerado por IA» na Cleo.", tag: "Confiança antes de velocidade" },
+  { icon: "shield", title: "Critério e cuidado", text: "Regras para o agente, revisão clínica na Luma e “Gerado por IA” na Cleo.", tag: "Confiança antes de velocidade" },
 ];
 
 export const TAKEAWAYS = [
