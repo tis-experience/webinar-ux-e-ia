@@ -538,7 +538,7 @@ export const CLEO_STEPS = [
   { title: "Ajustar", text: "Tirar o fundo, mudar a pose e corrigir os detalhes", tool: "Firefly · Gemini" },
   { title: "Criar o palco", text: "Testar a Cleo no cenário com a marca da Academia TIS", tool: "ChatGPT" },
   { title: "Dar vida", text: "Animar a personagem e sincronizar os lábios com a voz", tool: "Kling AI" },
-  { title: "Voz e montagem", text: "Juntar a voz-off, a música e o ritmo final", tool: "ElevenLabs · Premiere Pro" },
+  { title: "Voz e montagem", text: "Juntar a voz-off, a música e o ritmo final", tool: "ElevenLabs · Sync" },
 ];
 
 export const LESSONS = [
