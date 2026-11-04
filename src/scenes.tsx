@@ -2630,15 +2630,6 @@ export function TakeawayScene() {
           <MaskLine delay={1.8}>A IA acelera,</MaskLine>
           <MaskLine delay={2}>as pessoas dão a direcção.</MaskLine>
         </h1>
-        <motion.p className="w-takeaway-links" {...fade(2.8)}>
-          <a href="https://somostis.com" target="_blank" rel="noreferrer">
-            somostis.com
-          </a>
-          <i aria-hidden />
-          <a href="https://luma.somostis.com" target="_blank" rel="noreferrer">
-            luma.somostis.com
-          </a>
-        </motion.p>
       </div>
     </section>
   );
