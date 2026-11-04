@@ -477,7 +477,7 @@ export const VIDEO_CASES = [
     autoplay: true,
     cards: [
       { icon: "book-open", title: "Responde com fontes", text: "Usa os regulamentos oficiais e indica o documento de onde vem a resposta" },
-      { icon: "link", title: "Ligado ao Odoo", text: "Saldo de férias e pedidos, sem sair da conversa" },
+      { icon: "link", title: "Integração com o Odoo", text: "Vai permitir consultar o saldo de férias e fazer pedidos sem sair da conversa" },
       { icon: "shield", title: "Regras claras", text: "Nunca decide, nunca mostra dados de outra pessoa e passa os temas sensíveis ao RH" },
     ],
   },
@@ -537,11 +537,11 @@ export const LUMA_COLUMNS = [
 ];
 
 export const CLEO_STEPS = [
-  { title: "Criar a personagem", text: "Definir o aspecto, o estilo e a personalidade da Cleo", tool: "IA de imagem" },
+  { title: "Criar a personagem", text: "Definir o aspecto, o estilo e a personalidade da Cleo", tool: "Imagem da Academia" },
   { title: "Ajustar", text: "Tirar o fundo, mudar a pose e corrigir os detalhes", tool: "Firefly · Gemini" },
   { title: "Criar o palco", text: "Testar a Cleo no cenário com a marca da Academia TIS", tool: "ChatGPT" },
   { title: "Dar vida", text: "Animar a personagem e sincronizar os lábios com a voz", tool: "Kling AI" },
-  { title: "Voz e montagem", text: "Juntar a voz-off, a música e o ritmo final", tool: "Premiere Pro" },
+  { title: "Voz e montagem", text: "Juntar a voz-off, a música e o ritmo final", tool: "ElevenLabs · Premiere Pro" },
 ];
 
 export const LESSONS = [
