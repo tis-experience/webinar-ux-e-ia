@@ -1244,7 +1244,7 @@ export function HarnessScene({ build }: { build: number }) {
               <p className="w-harness-lead">A IA compõe com os elementos do Design System, dentro de regras claras</p>
               {HARNESS_ITEMS.map((item, n) => (
                 <motion.p key={item.text} className="w-hli" initial={STILL ? false : { opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={spring(1.5 + n * 0.1, 110, 16)}>
-                  <Icon name={item.icon} size={32} />
+                  <Icon name={item.icon} size={26} />
                   {item.text}
                 </motion.p>
               ))}
