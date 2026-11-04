@@ -2191,6 +2191,19 @@ export function CasesScene() {
 }
 
 const POSTERS: Record<string, string> = { "somos-tis": posterSomos, "agente-rh": posterAgente, "jardim-da-luma": posterLuma, cleo: posterCleo };
+/** Na versão num só ficheiro (`npm run build:single`), os vídeos vêm embutidos em base64 em
+ *  `window.__WEBINAR_VIDEOS` e passam a um endereço local na primeira vez que são precisos; no site vêm de `videos/`. */
+const videoUrls: Record<string, string> = {};
+function videoSrc(name: string) {
+  const embedded = (window as unknown as { __WEBINAR_VIDEOS?: Record<string, string> }).__WEBINAR_VIDEOS?.[name];
+  if (!embedded) return `./videos/${name}.mp4`;
+  if (!videoUrls[name]) {
+    const bytes = Uint8Array.from(atob(embedded), (c) => c.charCodeAt(0));
+    videoUrls[name] = URL.createObjectURL(new Blob([bytes], { type: "video/mp4" }));
+  }
+  return videoUrls[name];
+}
+
 const VIDEO_W = 880;
 const BAR_H = 48;
 
@@ -2225,7 +2238,7 @@ function CaseVideo({ item, big, onToggleBig }: { item: (typeof VIDEO_CASES)[numb
     <motion.div key={item.video} className="w-vid" data-playing={playing} role="button" tabIndex={0} aria-label={playing ? "Pausar o vídeo" : "Reproduzir o vídeo"} onClick={toggle} initial={STILL ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.3 } }} transition={{ duration: 0.5 }}>
       <video
         ref={ref}
-        src={`./videos/${item.video}.mp4`}
+        src={videoSrc(item.video)}
         poster={POSTERS[item.video]}
         playsInline
         loop={item.autoplay}

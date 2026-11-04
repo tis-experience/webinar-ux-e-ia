@@ -31,3 +31,11 @@ npm run build
 O resultado é um `dist/index.html` com as fontes e as imagens embutidas, mais a pasta `dist/videos` com os vídeos dos
 casos do Tema 2, e funciona aberto directamente no navegador, sem servidor. A publicação no GitHub Pages é feita pelo workflow `.github/workflows/deploy.yml` a cada push
 para `main`.
+
+Para ter a apresentação inteira num só ficheiro, com os vídeos embutidos (cerca de 18 MB), para abrir sem internet:
+
+```bash
+npm run build:single
+```
+
+O resultado fica em `dist/webinar-ux-e-ia.html`.

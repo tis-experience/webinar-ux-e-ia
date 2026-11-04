@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "build:single": "vite build && node scripts/single.mjs",
     "dev": "vite",
     "preview": "vite preview"
   },
