@@ -288,7 +288,7 @@ const BUBBLES_FRONT: Bubble[] = [
 ];
 const BUBBLES_BACK: Bubble[] = [
   { x: 1760, y: 830, text: "?", s: 0.62, o: 0.5, blur: 3 },
-  { x: 1260, y: 915, text: "", s: 0.7, o: 0.55, blur: 2 },
+  { x: 1390, y: 965, text: "", s: 0.7, o: 0.55, blur: 2 },
 ];
 
 function ChatBubbles({ items, offset = 0 }: { items: Bubble[]; offset?: number }) {
