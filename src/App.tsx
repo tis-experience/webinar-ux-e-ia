@@ -27,7 +27,7 @@ const REPEAT_ICON_PATH =
   "M35.3 12.65C32.4 9.75 28.4 8 24 8C15.15 8 8 15.15 8 24C8 32.85 15.15 40 24 40C31.45 40 37.7 34.9 39.45 28H35.25C33.6 32.65 29.15 36 24 36C17.35 36 12 30.65 12 24C12 17.35 17.35 12 24 12C27.3 12 30.25 13.35 32.4 15.5L26 22H40V8L35.3 12.65Z";
 const FULLSCREEN_ENTER_PATH = "M5 19v-6h2v4h4v2H5Zm12-8V7h-4V5h6v6h-2Z";
 const FULLSCREEN_EXIT_PATH = "M11 13v6H9v-4H5v-2h6Zm4-8v4h4v2h-6V5h2Z";
-const INTERACTIVE = "button, a, input, select, textarea, [role='button'], [role='dialog'], .w-notes";
+const INTERACTIVE = "button, a, input, select, textarea, [role='button'], [role='dialog']";
 const PROXIMITY_BUFFER = 32;
 const CURSOR_SPRING = { damping: 28, stiffness: 350, mass: 0.5 };
 
@@ -46,7 +46,6 @@ export default function App() {
   const [isOnInteractive, setIsOnInteractive] = useState(false);
   const [isTapping, setIsTapping] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(() => Boolean(document.fullscreenElement));
-  const [notesOpen, setNotesOpen] = useState(false);
 
   const mouseX = useMotionValue(-200);
   const mouseY = useMotionValue(-200);
@@ -95,7 +94,7 @@ export default function App() {
     }
   };
 
-  // ── Teclado: setas e espaço navegam, F ecrã inteiro, N notas do orador, R volta ao início ──
+  // ── Teclado: setas e espaço navegam, F ecrã inteiro, R volta ao início ──
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.altKey || event.ctrlKey || event.metaKey) return;
@@ -108,8 +107,6 @@ export default function App() {
       else if (event.key === "Home" || event.key === "r" || event.key === "R") goTo(0);
       else if (event.key === "End") goTo(STEPS.length - 1);
       else if (event.key === "f" || event.key === "F") toggleFullscreen();
-      else if (event.key === "n" || event.key === "N") setNotesOpen((open) => !open);
-      else if (event.key === "Escape") setNotesOpen(false);
       else return;
       event.preventDefault();
     };
@@ -240,29 +237,6 @@ export default function App() {
             <path d={isFullscreen ? FULLSCREEN_EXIT_PATH : FULLSCREEN_ENTER_PATH} />
           </svg>
         </button>
-
-        <AnimatePresence>
-          {notesOpen && (
-            <motion.aside
-              className="w-notes"
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 40 }}
-              transition={{ duration: 0.3 }}
-            >
-              <header>
-                <b>
-                  {String(stepIndex + 1).padStart(2, "0")} · {step.label}
-                </b>
-                <button type="button" aria-label="Fechar notas" onClick={() => setNotesOpen(false)}>
-                  ×
-                </button>
-              </header>
-              <p>{step.notes}</p>
-              <small>N abre e fecha as notas</small>
-            </motion.aside>
-          )}
-        </AnimatePresence>
 
         <motion.div
           className="w-cursor"

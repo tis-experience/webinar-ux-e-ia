@@ -2,12 +2,12 @@
 
 Versão interactiva do deck do webinar "UX e IA: da análise de necessidades à criação de soluções", da TIS, publicada
 em https://tis-experience.github.io/webinar-ux-e-ia/. O deck de referência é o "Webinar UX e IA (Versão Final)" nos
-artefactos do Claude; esta versão não o substitui. O motor (palco 1920×1080, cursor, `fx.tsx`, navegação) veio da
+artefactos do Claude; esta versão não o substitui. Por ser um site, não tem notas do orador: essas ficam só no deck. O motor (palco 1920×1080, cursor, `fx.tsx`, navegação) veio da
 apresentação do Núcleo de Experiência, no repositório `nucleo-de-experiencia-nos-projectos`.
 
 ## Regras de escrita
 
-Valem para qualquer texto: textos dos slides, notas do orador, documentação, commits e comentários de código.
+Valem para qualquer texto: textos dos slides, documentação, commits e comentários de código.
 
 - Português de Portugal na grafia usada na TIS (pré-Acordo: "projecto", "actual", "equipa", "ecrã", "utilizador").
 - Nunca usar travessão (nem "—" nem "–"). Usar ponto, vírgula, dois-pontos ou parênteses.
@@ -16,9 +16,8 @@ Valem para qualquer texto: textos dos slides, notas do orador, documentação, c
 
 ## Estrutura
 
-- `src/content.ts`: todos os textos e dados, a ordem dos ecrãs em `STEPS` (cada passo diz a cena que o mostra) e as
-  notas do orador. Passos seguidos com a mesma cena não trocam de ecrã: a cena evolui (processo, harness, perguntas).
-- `src/scenes.tsx`: as cenas. `src/App.tsx`: palco, navegação, teclado, cursor, notas e ecrã inteiro.
+- `src/content.ts`: todos os textos e dados e a ordem dos ecrãs em `STEPS` (cada passo diz a cena que o mostra). Passos seguidos com a mesma cena não trocam de ecrã: a cena evolui (processo, harness, perguntas).
+- `src/scenes.tsx`: as cenas. `src/App.tsx`: palco, navegação, teclado, cursor e ecrã inteiro.
 - `src/fx.tsx`: ajudantes de animação. Todos os atrasos passam por `PACE` (0,5), por isso um atraso escrito como 2
   dura 1 s. As durações não são escaladas.
 - `src/styles.css`: todos os estilos, com o prefixo `w-`.

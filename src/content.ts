@@ -9,7 +9,6 @@ export type Step = {
   build?: number;
   bg: string;
   dark?: boolean;
-  notes: string;
 };
 
 const LIGHT = "#f1f5f9";
@@ -21,23 +20,18 @@ export const STEPS: Step[] = [
     label: "Capa",
     bg: "#0b2aa8",
     dark: true,
-    notes: "Felizardo abre o webinar e dá as boas-vindas. Slide de abertura durante a saudação.",
   },
   {
     id: "introducao",
     scene: "intro",
     label: "A IA acelerou tudo",
     bg: "#f8fafc",
-    notes:
-      "Felizardo, introdução: a IA mudou a velocidade com que se faz quase tudo no desenvolvimento de produtos digitais. Esta velocidade traz duas perguntas: como continuar a entregar boas experiências quando tudo anda mais depressa, e como usar a IA para inovar, e não só para ir mais depressa. Para as duas, vamos ouvir quem enfrenta o problema na prática. A seguir, apresenta os oradores.",
   },
   {
     id: "oradores",
     scene: "oradores",
     label: "Oradores",
     bg: "#f8fafc",
-    notes:
-      "Felizardo apresenta o Marcell e a Sara e avisa que o público pode enviar perguntas pelo chat ao longo do webinar. A seguir, a chamada ao Tema 1.",
   },
   {
     id: "tema-1",
@@ -46,8 +40,6 @@ export const STEPS: Step[] = [
     label: "Tema 1",
     bg: "#0065ed",
     dark: true,
-    notes:
-      "Felizardo faz a chamada ao Tema 1: apresenta o tema da entrega e pergunta ao Marcell como se entregam melhores experiências num mundo tão acelerado. Bloco de 20 minutos.",
   },
   {
     id: "processo-tradicional",
@@ -55,8 +47,6 @@ export const STEPS: Step[] = [
     build: 0,
     label: "O processo de UX tradicional",
     bg: LIGHT,
-    notes:
-      "Marcell: este é o processo de UX que todos conhecemos. Compreender, definir, prototipar, validar e construir, em sequência, e cada etapa espera pela anterior. A pesquisa é analisada à mão, os requisitos ficam em documentos separados, os ecrãs são desenhados um a um e o protótipo é uma imagem. Como produzir leva tempo, testam-se poucas alternativas, e no fim o desenvolvimento reinterpreta o protótipo em código. A maior parte do tempo vai para produzir, e sobra pouco para compreender o problema e validar com quem vai usar a solução. A seguir, como a IA muda esta equação.",
   },
   {
     id: "abordagem-1",
@@ -64,8 +54,6 @@ export const STEPS: Step[] = [
     build: 1,
     label: "Abordagem 1",
     bg: LIGHT,
-    notes:
-      "Marcell: primeira abordagem. Em relação ao processo tradicional, as etapas permanecem as mesmas; muda a duração de cada uma e onde as pessoas põem o seu tempo. A IA contribui de forma diferente em cada etapa: encontra padrões nas entrevistas, ajuda a detalhar requisitos, compõe ecrãs, amplia as alternativas testadas e converte o protótipo validado em código de produção, com os mesmos componentes. A equipa revê, corrige e decide, e o tempo poupado na produção vai para compreender o problema e validar com quem vai usar a solução.",
   },
   {
     id: "abordagem-2",
@@ -73,8 +61,6 @@ export const STEPS: Step[] = [
     build: 2,
     label: "Abordagem 2",
     bg: LIGHT,
-    notes:
-      "Marcell: segunda abordagem. Em vez de cinco etapas em sequência, o processo encolhe para três frentes que trabalham ao mesmo tempo sobre uma base partilhada: dados de uso, personas sintéticas, requisitos com critérios de aceitação e o Design System. A IA ajuda a entender o problema a partir dos dados e de personas sintéticas, compõe os ecrãs já em código com os componentes do produto e acelera a validação com utilizadores e métricas reais. Como design, produto, desenvolvimento e QA partem da mesma base, o protótipo não é uma peça isolada: o que se valida já é a entrega final.",
   },
   {
     id: "abordagem-3",
@@ -82,16 +68,12 @@ export const STEPS: Step[] = [
     build: 3,
     label: "Abordagem 3",
     bg: LIGHT,
-    notes:
-      "Marcell: terceira abordagem. No limite, a IA não acelera só o processo de quem desenha; passa a fazer parte do próprio produto. A equipa já não desenha um ecrã final para uma persona média: define o sistema, ou seja, o Design System, as regras do que pode mudar e os objectivos a atingir. Dentro desses limites, a IA observa o comportamento de cada pessoa, aprende os seus padrões e adapta ecrã, conteúdo e fluxo em ciclo contínuo. O resultado é uma experiência própria para cada pessoa, e o papel do designer passa a ser desenhar o sistema que gera essas experiências e garantir que continuam coerentes, acessíveis e éticas no uso dos dados.",
   },
   {
     id: "comparacao",
     scene: "comparacao",
     label: "As três abordagens lado a lado",
     bg: LIGHT,
-    notes:
-      "Marcell: antes de passar à prática, as três abordagens lado a lado, medidas na mesma base: quanto encurta o ciclo da ideia à entrega e quanto ganha a experiência de quem usa. São estimativas indicativas, porque não existe estudo que meça estas abordagens de ponta a ponta; partem de medições por tarefa. Na primeira, cada etapa encurta, e há estudos que mostram tarefas de código até 55% mais rápidas com IA, mas a sequência, as esperas e a revisão continuam, por isso o ciclo completo encurta à volta de 20 a 30%. O ganho na experiência vem do tempo que sobra para compreender o problema e validar. Na segunda, desaparece o retrabalho entre design e código, e no estudo da Figma designers com Design System concluíram a tarefa 34% mais rápido; o ciclo pode encurtar 40 a 50%. A experiência melhora porque sobra tempo para validar mais, e isso só se confirma quando a validação com pessoas reais acompanha o ciclo inteiro. Se a compactação servir para saltar etapas, a velocidade mantém-se, mas o ganho na experiência desce ao nível da primeira abordagem. Exige um Design System e um harness maduros. A terceira assenta nessa mesma base: depois de montadas as regras, os dados e os limites, a solução adapta-se sem novos ciclos de design, e o ganho maior está na experiência, uma para cada pessoa; a McKinsey aponta 10 a 15% mais receita com personalização bem feita. O arranque é mais exigente, e os cuidados passam por coerência, acessibilidade e privacidade dos dados. Se alguém perguntar: o estudo da METR de 2025 mediu programadores experientes 19% mais lentos com IA em código maduro, e o DORA de 2024 associou mais adopção de IA sem processo maduro a menos estabilidade, o que reforça que o ganho depende da base e do processo.",
   },
   {
     id: "na-pratica",
@@ -100,16 +82,12 @@ export const STEPS: Step[] = [
     label: "Como se constrói com IA na prática?",
     bg: "#334155",
     dark: true,
-    notes:
-      "Felizardo faz a transição do processo para a prática: depois das três abordagens, pergunta ao Marcell como se constrói com IA no dia a dia. O Marcell responde nos slides seguintes, com a fonte única de contexto, o harness e o Design System.",
   },
   {
     id: "fonte-unica",
     scene: "fonte",
     label: "Contexto numa fonte única",
     bg: LIGHT,
-    notes:
-      "Marcell responde: na prática, tudo começa pelo contexto. Quando a documentação está incompleta, cada pessoa preenche as lacunas com a sua própria interpretação. O design lê o requisito de uma forma, o desenvolvimento de outra, e no fim as entregas não batem certo; com a IA a produzir depressa, essas leituras diferentes multiplicam-se ainda mais rápido. Por isso há um repositório único com as necessidades, os requisitos, as decisões, os critérios de aceitação e o protótipo. Pessoas e IA trabalham a partir da mesma fonte, e quando algo muda, muda na fonte e propaga-se para tudo o que depende dela.",
   },
   {
     id: "harness",
@@ -117,8 +95,6 @@ export const STEPS: Step[] = [
     build: 0,
     label: "Harness e Design System",
     bg: LIGHT,
-    notes:
-      "Marcell: o Design System são as peças aprovadas do produto: cores, tipografia, componentes e padrões de acessibilidade. O harness é o conjunto de regras em volta da IA: instruções, contexto do projecto, regras de negócio, as features descritas, ferramentas permitidas, verificações automáticas e casos de teste. Com os dois, a IA compõe com as peças do produto, dentro de regras claras, em vez de inventar interface.",
   },
   {
     id: "composicao-do-harness",
@@ -126,16 +102,12 @@ export const STEPS: Step[] = [
     build: 1,
     label: "A composição do harness",
     bg: LIGHT,
-    notes:
-      "Marcell, complemento do harness: na prática, o harness é um ficheiro de instruções que a IA lê antes de produzir qualquer ecrã, no estilo de um AGENTS.md. Começa pelas referências, com o caminho para o Design System, os componentes, as regras de acessibilidade, os ecrãs já aprovados e o tom de voz. Depois vem a secção Fazer, com as regras que todo o resultado cumpre: usar só componentes e tokens do Design System, prever estados de erro, vazio e carregamento, e ligar cada ecrã a um requisito da fonte única. E a secção Não fazer, com os limites: inventar componentes, cores ou tamanhos, usar valores fora dos tokens ou alterar fluxos aprovados sem critério de aceitação. É curto, fica guardado com o código e a equipa mantém-no; os resultados passam por verificações automáticas antes da revisão humana.",
   },
   {
     id: "na-pratica-exemplo",
     scene: "exemplo",
     label: "Na prática",
     bg: LIGHT,
-    notes:
-      "Marcell: na prática, é isto que acabámos de ver. À esquerda, o repositório com o harness: as instruções, o contexto e os limites que a IA lê antes de produzir. Ao centro, a documentação dos componentes do Design System, com a anatomia, os estilos e os tamanhos de cada peça. À direita, um ecrã construído pela IA com essas peças e dentro dessas regras. Os agentes de IA compõem apenas com o que a equipa já aprovou.",
   },
   {
     id: "ganhos",
@@ -144,32 +116,24 @@ export const STEPS: Step[] = [
     label: "Que ganhos práticos se obtêm?",
     bg: "#334155",
     dark: true,
-    notes:
-      "Felizardo faz a transição para o resultado do bloco: depois de ver como se constrói na prática, pergunta ao Marcell que ganhos práticos se obtêm com este processo. O Marcell responde nos três slides seguintes.",
   },
   {
     id: "consistencia",
     scene: "consistencia",
     label: "Consistência de raiz",
     bg: LIGHT,
-    notes:
-      "Marcell responde: o processo e a base técnica libertam tempo, e daí vêm três ganhos práticos. É aqui que o mais rápido se torna melhor. O primeiro ganho é a consistência. Sem regras partilhadas, cada ecrã resolve à sua maneira e o produto vai perdendo coerência a cada entrega. Com o Design System e o harness, a IA só usa os componentes e os tokens aprovados, já com os padrões de acessibilidade e os estados de erro, vazio e carregamento previstos, e as verificações automáticas apanham desvios antes da revisão. E quando um componente ou token muda no Design System, a actualização chega a todos os ecrãs de uma vez, sem refazer um a um. A equipa deixa de policiar pormenores e concentra-se no que importa para quem usa o produto.",
   },
   {
     id: "validacao",
     scene: "validacao",
     label: "Validação com protótipos funcionais",
     bg: LIGHT,
-    notes:
-      "Marcell: o segundo ganho é a validação. Com a IA, construir deixa de ser o gargalo. Antes, a maior parte do tempo ia para produzir ecrãs e especificar, e o protótipo era uma imagem clicável. Com a IA, o protótipo nasce como produto real, em código e com o Design System, e produzir passa a ocupar uma fração do tempo. O tempo libertado vai para validar: testar com pessoas reais e observar como usam o produto, comparar várias alternativas lado a lado para escolher a melhor, e deixar que as métricas de uso orientem as decisões. É aqui que o \"mais rápido\" se torna \"melhor\", e é por isso que o que se valida já pode seguir para produção: zero handoff.",
   },
   {
     id: "zero-handoff",
     scene: "handoff",
     label: "Zero handoff",
     bg: LIGHT,
-    notes:
-      "Marcell, terceiro ganho e fecho do bloco: no modelo tradicional, o design entrega uma especificação, com ecrãs estáticos e anotações, e o desenvolvimento reinterpreta, perdendo detalhe em cada passagem. Com o protótipo em código e os componentes do Design System, design e desenvolvimento trabalham sobre o mesmo artefacto, e o designer passa menos tempo a especificar e mais a garantir a qualidade do que é construído. Fecha com a síntese do bloco: tudo sai consistente com o Design System, porque a IA só usa as peças e as regras definidas pela equipa; valida-se mais e com pessoas reais; e constrói-se exactamente o que foi validado. É assim que o mais rápido se torna melhor. Felizardo faz a chamada ao Tema 2.",
   },
   {
     id: "tema-2",
@@ -178,8 +142,6 @@ export const STEPS: Step[] = [
     label: "Tema 2",
     bg: "#0065ed",
     dark: true,
-    notes:
-      "Felizardo faz a chamada ao Tema 2: apresenta a inovação como o trabalho que começa antes de alguém pedir, lembra que as mesmas ferramentas estão ao alcance de todos e pergunta à Sara onde uma organização encontra o seu diferencial para inovar. Depois convida o público a enviar perguntas pelo chat, para o Marcell e para a Sara.",
   },
   {
     id: "demonstracao",
@@ -188,8 +150,6 @@ export const STEPS: Step[] = [
     label: "Demonstração prática",
     bg: "#143b8b",
     dark: true,
-    notes:
-      "Slide de espera enquanto a Sara partilha o ecrã. As demonstrações não têm script definido no roteiro e não retomam o processo do Bloco 1. No fim, a Sara devolve a palavra ao Felizardo para as perguntas.",
   },
   {
     id: "perguntas",
@@ -198,8 +158,6 @@ export const STEPS: Step[] = [
     label: "Perguntas",
     bg: "#0065ed",
     dark: true,
-    notes:
-      "Felizardo abre as perguntas, de 10 a 15 minutos, e dirige cada uma ao Marcell ou à Sara. Se ainda não houver perguntas, começa com uma de reserva.",
   },
   {
     id: "obrigado",
@@ -207,8 +165,6 @@ export const STEPS: Step[] = [
     label: "Obrigado",
     bg: "#0f172a",
     dark: true,
-    notes:
-      "Desfecho: Felizardo retoma as duas respostas da tarde, agradece ao Marcell, à Sara e a todos os que participaram, e convida a acompanhar a TIS nas redes sociais.",
   },
 ];
 

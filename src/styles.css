@@ -98,12 +98,6 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-root[data-gray="true"] .w-foot-id i { background: rgba(148, 163, 184, 0.5); }
 .w-root[data-gray="true"] .w-fullscreen:hover, .w-root[data-gray="true"] .w-fullscreen:focus-visible { background: var(--s6); }
 
-.w-notes { position: fixed; right: 16px; top: 76px; bottom: 16px; width: min(440px, calc(100vw - 32px)); z-index: 20; display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; border-radius: 18px; background: rgba(15, 23, 42, 0.94); color: #e2e8f0; font-size: 17px; line-height: 1.6; cursor: auto; user-select: text; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); }
-.w-notes header { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: var(--strong); font-size: 15px; letter-spacing: 1px; text-transform: uppercase; color: var(--k4); }
-.w-notes header button { width: 32px; height: 32px; border-radius: 8px; font-size: 24px !important; line-height: 1; color: #fff !important; }
-.w-notes header button:hover { background: rgba(255, 255, 255, 0.12) !important; }
-.w-notes p { flex: 1; overflow: auto; font-family: Arial, sans-serif; }
-.w-notes small { font-size: 12px; color: var(--s4); }
 
 /* ── Capa, perguntas e fecho ──────────────────────────────────────────── */
 

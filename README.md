@@ -5,13 +5,13 @@ da TIS, publicada em https://tis-experience.github.io/webinar-ux-e-ia/. Segue o 
 apresentação do Núcleo de Experiência (`tis-experience/nucleo-de-experiencia-nos-projectos`).
 
 A versão de referência continua a ser o deck "Webinar UX e IA (Versão Final)" nos artefactos do Claude; esta é uma
-leitura animada do mesmo conteúdo, com as notas do orador em cada ecrã.
+leitura animada do mesmo conteúdo.
 
 ## Navegação
 
 - Clique na metade direita do ecrã para avançar e na metade esquerda para recuar. As setas, Page Up/Down e a barra de
   espaço também navegam, e no telemóvel basta deslizar para o lado.
-- `N` abre e fecha as notas do orador, `F` alterna o ecrã inteiro, `R` ou `Home` volta à capa e `End` vai para o fim.
+- `F` alterna o ecrã inteiro, `R` ou `Home` volta à capa e `End` vai para o fim.
 - `#<passo>` abre um ecrã directamente (por exemplo `#harness`) e `#<passo>-still` mostra-o no estado final, sem
   animações. Os identificadores dos passos estão em `STEPS`, em `src/content.ts`.
 
