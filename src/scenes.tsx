@@ -32,6 +32,8 @@ import {
   Sparkles,
   Star,
   TrendingUp,
+  Volume2,
+  VolumeX,
   TriangleAlert,
   Users,
   Wrench,
@@ -2211,13 +2213,17 @@ const BAR_H = 48;
 function CaseVideo({ item, big, onToggleBig }: { item: (typeof VIDEO_CASES)[number]; big: boolean; onToggleBig: () => void }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
   const progress = useMotionValue(0);
+  const sound = "sound" in item && item.sound;
 
+  // Todos os vídeos arrancam logo, em ciclo e sem som (o navegador só deixa arrancar sozinho um vídeo mudo).
   useEffect(() => {
     const video = ref.current;
     if (!video) return undefined;
-    video.muted = item.autoplay;
-    if (item.autoplay && !STILL) void video.play().catch(() => undefined);
+    video.muted = true;
+    setMuted(true);
+    if (!STILL) void video.play().catch(() => undefined);
     let frame = 0;
     const tick = () => {
       if (video.duration) progress.set(video.currentTime / video.duration);
@@ -2250,7 +2256,7 @@ function CaseVideo({ item, big, onToggleBig }: { item: (typeof VIDEO_CASES)[numb
         src={videoSrc(item.video)}
         poster={POSTERS[item.video]}
         playsInline
-        loop={item.autoplay}
+        loop
         preload="auto"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
@@ -2259,6 +2265,24 @@ function CaseVideo({ item, big, onToggleBig }: { item: (typeof VIDEO_CASES)[numb
       <span className="w-vid-play" aria-hidden>
         {playing ? <Pause size={44} fill="currentColor" strokeWidth={0} /> : <Play size={44} fill="currentColor" strokeWidth={0} />}
       </span>
+      {sound && (
+        <button
+          type="button"
+          className="w-vid-sound"
+          data-muted={muted}
+          aria-label={muted ? "Ligar o som" : "Desligar o som"}
+          onClick={(event) => {
+            event.stopPropagation();
+            const video = ref.current;
+            if (!video) return;
+            video.muted = !video.muted;
+            setMuted(video.muted);
+            if (!video.muted && video.paused) void video.play().catch(() => undefined);
+          }}
+        >
+          {muted ? <VolumeX size={22} aria-hidden /> : <Volume2 size={22} aria-hidden />}
+        </button>
+      )}
       <button
         type="button"
         className="w-vid-expand"

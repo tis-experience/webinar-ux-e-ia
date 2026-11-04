@@ -451,7 +451,7 @@ export const CASES = [
   { n: 3, name: "Cleo", role: "A IA que dá rosto e voz", text: "Apresentadora virtual da Academia TIS", step: "cleo" },
 ];
 
-/** Os ecrãs com vídeo. Os três primeiros não têm som e passam sozinhos; o da Cleo tem som e começa com um clique. */
+/** Os ecrãs com vídeo. Todos passam sozinhos, em ciclo e sem som; o da Cleo tem áudio, que se liga no botão do canto. */
 export const VIDEO_CASES = [
   {
     kicker: "Caso 1 · Plataforma Somos TIS",
@@ -460,7 +460,6 @@ export const VIDEO_CASES = [
     video: "somos-tis",
     ratio: 1440 / 900,
     caption: "Gravação de ecrã do protótipo, com dados fictícios · 30 s",
-    autoplay: true,
     facts: [
       { label: "Para quem", text: "Todos os colaboradores da TIS, com a conta Microsoft da empresa" },
       { label: "O que reúne", text: "Chat, perguntas frequentes, notícias, eventos e documentos" },
@@ -474,7 +473,6 @@ export const VIDEO_CASES = [
     video: "agente-rh",
     ratio: 1440 / 900,
     caption: "Gravação de ecrã do protótipo · 29 s",
-    autoplay: true,
     cards: [
       { icon: "book-open", title: "Responde com fontes", text: "Usa os regulamentos oficiais e indica o documento de onde vem a resposta" },
       { icon: "link", title: "Integração com o Odoo", text: "Vai permitir consultar o saldo de férias e fazer pedidos sem sair da conversa" },
@@ -488,7 +486,6 @@ export const VIDEO_CASES = [
     video: "jardim-da-luma",
     ratio: 16 / 9,
     caption: "Animações do próprio jogo · 33 s",
-    autoplay: true,
     facts: [
       { label: "O que é", text: "A iniciativa Outubro Rosa da TIS, em forma de jogo" },
       { label: "Como funciona", text: "12 descobertas, e cada uma dá uma pétala ao teu jardim" },
@@ -502,8 +499,8 @@ export const VIDEO_CASES = [
     url: "",
     video: "cleo",
     ratio: 1600 / 892,
-    caption: "Vídeo com som · 1 min 27 s",
-    autoplay: false,
+    caption: "Vídeo com som, que começa sem áudio · 1 min 27 s",
+    sound: true,
     facts: [
       { label: "O que é", text: "Uma personagem criada com IA para apresentar a Academia TIS" },
       { label: "Onde aparece", text: "No lançamento da Academia, em ecrã e em vídeo" },

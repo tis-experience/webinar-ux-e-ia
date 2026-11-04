@@ -25,8 +25,8 @@ Valem para qualquer texto: textos dos slides, documentação, commits e comentá
   dimensão em que aparecem. `src/assets/sara` tem as imagens do Tema 2 (casos Somos TIS, Jardim da Luma e Cleo),
   tiradas do deck do bloco da Sara.
 - `public/videos`: os vídeos dos casos, em H.264. Ficam fora do `index.html` (seriam dezenas de MB embutidos) e são
-  copiados para `dist/videos`; ao publicar o artefacto, enviam-se com o mesmo caminho. Os três sem som passam sozinhos
-  e em ciclo; o da Cleo tem som e começa com um clique.
+  copiados para `dist/videos`; ao publicar o artefacto, enviam-se com o mesmo caminho. Todos passam sozinhos, em ciclo e
+  sem som; o da Cleo tem áudio, que se liga no botão do canto.
 
 ## Tema 2
 
