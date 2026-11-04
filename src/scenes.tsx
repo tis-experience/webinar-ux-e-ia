@@ -82,7 +82,7 @@ import {
   VALIDATION_CARDS,
   VIDEO_CASES,
 } from "./content";
-import { CountUp, EASE, MaskLine, PACE, STILL, Swap, fade, rise, spring, tween, useAfter } from "./fx";
+import { CountUp, EASE, MaskLine, PACE, STILL, Swap, draw, fade, rise, spring, tween, useAfter } from "./fx";
 
 const exit = { opacity: 0, transition: { duration: 0.25 } };
 
@@ -655,9 +655,9 @@ export function ProcessScene({ build }: { build: number }) {
                       strokeWidth="3"
                       strokeLinecap="round"
                       fill="none"
-                      initial={STILL ? false : { pathLength: 0, stroke: "#94a3b8" }}
-                      animate={{ pathLength: 1, stroke: ai ? "#4f9cf9" : "#94a3b8" }}
-                      transition={{ pathLength: tween(0.5, 0.6 + i * 0.3), stroke: { duration: 0.6 } }}
+                      initial={STILL ? false : { pathLength: 0, opacity: 0, stroke: "#94a3b8" }}
+                      animate={{ pathLength: 1, opacity: 1, stroke: ai ? "#4f9cf9" : "#94a3b8" }}
+                      transition={{ pathLength: tween(0.5, 0.6 + i * 0.3), opacity: { duration: 0.15, delay: STILL ? 0 : (0.6 + i * 0.3) * PACE }, stroke: { duration: 0.6 } }}
                     />
                     <motion.path
                       d={`M${x2 - 11} ${ROW_Y - 9} L${x2} ${ROW_Y} L${x2 - 11} ${ROW_Y + 9}`}
@@ -667,7 +667,7 @@ export function ProcessScene({ build }: { build: number }) {
                       fill="none"
                       initial={STILL ? false : { opacity: 0, stroke: "#94a3b8" }}
                       animate={{ opacity: 1, stroke: ai ? "#4f9cf9" : "#94a3b8" }}
-                      transition={{ opacity: tween(0.3, 0.95 + i * 0.3), stroke: { duration: 0.6 } }}
+                      transition={{ opacity: tween(0.2, 1 + i * 0.3), stroke: { duration: 0.6 } }}
                     />
                   </g>
                 );
@@ -738,19 +738,11 @@ export function ProcessScene({ build }: { build: number }) {
               </defs>
               <g transform="translate(120 290)">
                 {ARCS.map((d, n) => (
-                  <motion.path
-                    key={d}
-                    id={`w-arc${n}`}
-                    d={d}
-                    fill="none"
-                    stroke="#8EC6FD"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    markerEnd="url(#w-ah)"
-                    initial={STILL ? false : { pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={tween(0.6, 0.9 + n * 0.25)}
-                  />
+                  <g key={d}>
+                    <motion.path id={`w-arc${n}`} d={d} fill="none" stroke="#8EC6FD" strokeWidth="4" strokeLinecap="round" {...draw(0.9 + n * 0.25, 0.6)} />
+                    {/* A ponta da seta só aparece quando o arco acaba de se desenhar. */}
+                    <motion.path d={d} fill="none" stroke="none" markerEnd="url(#w-ah)" {...fade(0.9 + n * 0.25 + 1.2, 0.2)} />
+                  </g>
                 ))}
                 {!STILL && (
                   <motion.g {...fade(0.6)}>
@@ -852,7 +844,7 @@ export function ProcessScene({ build }: { build: number }) {
                   const d = `M832 0 C832 45 ${x} 35 ${x} 80`;
                   return (
                     <g key={n}>
-                      <motion.path d={d} fill="none" stroke="#0065ED" strokeWidth="3.5" strokeLinecap="round" initial={STILL ? false : { pathLength: 0 }} animate={{ pathLength: 1 }} transition={tween(0.6, 1.5 + Math.abs(n - 2) * 0.06)} />
+                      <motion.path d={d} fill="none" stroke="#0065ED" strokeWidth="3.5" strokeLinecap="round" {...draw(1.5 + Math.abs(n - 2) * 0.06, 0.6)} />
                       {!STILL && (
                         <motion.circle r="6" fill="#8EC6FD" {...fade(2.4)}>
                           <animateMotion dur="4.2s" begin={`${-n * 0.85}s`} repeatCount="indefinite" path={d} />
@@ -1926,9 +1918,7 @@ function Stroke({ d, delay, dur = 0.9, ...rest }: { d: string; delay: number; du
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
-      initial={STILL ? false : { pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: dur, delay: delay * PACE, ease: "easeInOut" }}
+      {...draw(delay, dur, "easeInOut")}
       {...rest}
     />
   );
@@ -1944,9 +1934,12 @@ function SketchArt({ delay }: { delay: number }) {
       <Stroke d="M48 66 Q84 64 120 67 Q122 88 119 110 Q84 112 47 109 Q46 88 48 66" delay={delay + 1.6} {...ink} />
       <Stroke d="M138 74 Q164 72 192 75" delay={delay + 2.2} {...ink} />
       <Stroke d="M138 94 Q160 93 184 95" delay={delay + 2.5} {...ink} />
-      <Stroke d="M236 76 L292 76 M280 66 L292 76 L280 86" delay={delay + 3} stroke="#0065ed" strokeWidth={3} />
+      <Stroke d="M236 76 L292 76" delay={delay + 3} dur={0.5} stroke="#0065ed" strokeWidth={3} />
+      <motion.path d="M280 66 L292 76 L280 86" fill="none" stroke="#0065ed" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" {...fade(delay + 4, 0.2)} />
       <motion.rect x={306} y={52} width={110} height={48} rx={24} fill="#ffffff" stroke="#cbd5e1" strokeWidth={2} {...fade(delay + 3.4)} />
-      <motion.rect x={326} y={66} width={3} height={20} rx={1.5} fill="#0065ed" className="w-caret" {...fade(delay + 3.6)} />
+      <motion.g {...fade(delay + 3.6)}>
+        <rect x={326} y={66} width={3} height={20} rx={1.5} fill="#0065ed" className="w-caret" />
+      </motion.g>
     </svg>
   );
 }
@@ -1961,9 +1954,11 @@ function OpenArt({ delay }: { delay: number }) {
         <Stroke key={y} d={`M40 76 C150 76 250 ${y} 392 ${y}`} delay={delay + 0.4 + n * 0.25} dur={1.3} stroke={n === 0 ? "#0065ed" : "#94a3b8"} strokeWidth={n === 0 ? 4 : 3} />
       ))}
       {FAN_Y.map((y, n) => (
-        <motion.circle key={y} cx={400} cy={y} r={n === 0 ? 9 : 7} fill={n === 0 ? "#0065ed" : "#cbd5e1"} {...fade(delay + 2.4 + n * 0.25, 0.4)} />
+        <motion.circle key={y} cx={400} cy={y} r={n === 0 ? 9 : 7} fill={n === 0 ? "#0065ed" : "#cbd5e1"} {...fade(delay + 3 + n * 0.25, 0.3)} />
       ))}
-      <circle cx={400} cy={FAN_Y[0]} r={9} fill="none" stroke="#0065ed" strokeWidth={2} className="w-ping-dot" />
+      <motion.g {...fade(delay + 3.2, 0.4)}>
+        <circle cx={400} cy={FAN_Y[0]} r={9} fill="none" stroke="#0065ed" strokeWidth={2} className="w-ping-dot" />
+      </motion.g>
       <motion.circle cx={40} cy={76} r={10} fill="#0f172a" {...fade(delay, 0.4)} />
     </svg>
   );
@@ -1979,8 +1974,10 @@ function CloseArt({ delay }: { delay: number }) {
       {FAN_Y.map((y, n) => (
         <Stroke key={y} d={`M32 ${y} C150 ${y} 250 76 384 76`} delay={delay + 0.8 + n * 0.15} dur={1.3} stroke="#8ec6fd" strokeWidth={3} strokeOpacity={0.75} />
       ))}
-      <motion.circle cx={396} cy={76} r={13} fill="#ffffff" {...fade(delay + 2.6, 0.4)} />
-      <circle cx={396} cy={76} r={13} fill="none" stroke="#ffffff" strokeWidth={2} className="w-ping-dot" />
+      <motion.circle cx={396} cy={76} r={13} fill="#ffffff" {...fade(delay + 4, 0.3)} />
+      <motion.g {...fade(delay + 4.2, 0.4)}>
+        <circle cx={396} cy={76} r={13} fill="none" stroke="#ffffff" strokeWidth={2} className="w-ping-dot" />
+      </motion.g>
     </svg>
   );
 }

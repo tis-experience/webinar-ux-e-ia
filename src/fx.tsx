@@ -24,6 +24,17 @@ export const fade = (delay = 0, duration = 0.6) =>
 export const spring = (delay = 0, stiffness = 70, damping = 16) =>
   STILL ? { duration: 0 } : ({ type: "spring", stiffness, damping, delay: delay * PACE } as const);
 
+/** Traço que se desenha do início ao fim. Fica invisível até começar, porque com pontas redondas um traço de
+ *  comprimento zero aparece como um ponto (e uma seta só com a ponta) antes de a animação arrancar. */
+export const draw = (delay = 0, duration = 0.6, ease: readonly number[] | string = EASE) =>
+  STILL
+    ? {}
+    : {
+        initial: { pathLength: 0, opacity: 0 },
+        animate: { pathLength: 1, opacity: 1 },
+        transition: { pathLength: { duration, delay: delay * PACE, ease }, opacity: { duration: 0.15, delay: delay * PACE } },
+      };
+
 export const tween = (duration: number, delay = 0) =>
   STILL ? { duration: 0 } : { duration, delay: delay * PACE, ease: EASE };
 

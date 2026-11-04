@@ -43,6 +43,9 @@ a Sara enviou, passados para a grafia pré-Acordo e para as regras de escrita ac
   posições são calculadas em JavaScript (`OrbitDots`, `SolidArrow`).
 - Entradas que crescem para os lados abrem sempre da esquerda para a direita, e duas peças paralelas entram da mesma
   forma.
+- Traços que se desenham usam `draw` (em `fx.tsx`), que os mantém invisíveis até começarem: com pontas redondas, um
+  traço de comprimento zero aparece como um ponto. Pontas de seta, pontos finais e anéis só aparecem quando o traço
+  que os leva acaba de se desenhar.
 - Ao mudar de ecrã, nada pode voltar para trás à vista: elementos que reiniciam são montados de novo (ver o `key` do
   marcador do processo).
 
