@@ -2194,8 +2194,8 @@ const POSTERS: Record<string, string> = { "somos-tis": posterSomos, "agente-rh":
 const VIDEO_W = 880;
 const BAR_H = 48;
 
-/** Vídeo de um caso: os que não têm som passam sozinhos; um clique pausa ou retoma. */
-function CaseVideo({ item }: { item: (typeof VIDEO_CASES)[number] }) {
+/** Vídeo de um caso: os que não têm som passam sozinhos; um clique pausa ou retoma, e o botão do canto amplia. */
+function CaseVideo({ item, big, onToggleBig }: { item: (typeof VIDEO_CASES)[number]; big: boolean; onToggleBig: () => void }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const progress = useMotionValue(0);
@@ -2222,7 +2222,7 @@ function CaseVideo({ item }: { item: (typeof VIDEO_CASES)[number] }) {
   };
 
   return (
-    <motion.div key={item.video} className="w-vid" role="button" tabIndex={0} aria-label={playing ? "Pausar o vídeo" : "Reproduzir o vídeo"} onClick={toggle} initial={STILL ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.3 } }} transition={{ duration: 0.5 }}>
+    <motion.div key={item.video} className="w-vid" data-playing={playing} role="button" tabIndex={0} aria-label={playing ? "Pausar o vídeo" : "Reproduzir o vídeo"} onClick={toggle} initial={STILL ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.3 } }} transition={{ duration: 0.5 }}>
       <video
         ref={ref}
         src={`./videos/${item.video}.mp4`}
@@ -2233,33 +2233,76 @@ function CaseVideo({ item }: { item: (typeof VIDEO_CASES)[number] }) {
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />
-      <AnimatePresence>
-        {!playing && (
-          <motion.span className="w-vid-play" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.3 }}>
-            <Play size={44} fill="currentColor" strokeWidth={0} aria-hidden />
-          </motion.span>
-        )}
-      </AnimatePresence>
-      <span className="w-vid-state" data-on={playing}>
-        {playing ? <Pause size={18} fill="currentColor" strokeWidth={0} aria-hidden /> : <Play size={18} fill="currentColor" strokeWidth={0} aria-hidden />}
+      {/* O mesmo botão grande, ao centro: reproduzir quando está parado e pausar (ao passar o rato) quando está a correr. */}
+      <span className="w-vid-play" aria-hidden>
+        {playing ? <Pause size={44} fill="currentColor" strokeWidth={0} /> : <Play size={44} fill="currentColor" strokeWidth={0} />}
       </span>
+      <button
+        type="button"
+        className="w-vid-expand"
+        aria-label={big ? "Reduzir o vídeo" : "Ver o vídeo maior"}
+        onClick={(event) => {
+          event.stopPropagation();
+          onToggleBig();
+        }}
+      >
+        {big ? <Minimize2 size={22} aria-hidden /> : <Maximize2 size={22} aria-hidden />}
+      </button>
       <motion.i className="w-vid-progress" style={{ scaleX: progress }} />
     </motion.div>
   );
 }
 
+/** Onde fica a moldura do vídeo: no lugar dela ou ampliada ao centro do palco, com a mesma proporção. */
+function videoRect(item: (typeof VIDEO_CASES)[number], big: boolean) {
+  const bar = item.url ? BAR_H : 0;
+  if (!big) return { left: 128, top: 290, width: VIDEO_W, height: Math.round(VIDEO_W / item.ratio) + bar };
+  const width = Math.round(Math.min(1600, (900 - bar) * item.ratio));
+  const height = Math.round(width / item.ratio) + bar;
+  return { left: (1920 - width) / 2, top: (1080 - height) / 2, width, height };
+}
+
 export function VideoScene({ index }: { index: number }) {
   const item = VIDEO_CASES[index];
-  const height = Math.round(VIDEO_W / item.ratio) + (item.url ? BAR_H : 0);
+  const [big, setBig] = useState(false);
+  const rect = videoRect(item, big);
+  const height = videoRect(item, false).height;
+
+  useEffect(() => setBig(false), [index]);
+
+  useEffect(() => {
+    if (!big) return undefined;
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setBig(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [big]);
 
   return (
     <section className="w-scene">
       <Head kicker={item.kicker} title={item.title} k={String(index)} />
+      <AnimatePresence>
+        {big && (
+          <motion.div
+            key="backdrop"
+            className="w-vbackdrop"
+            role="dialog"
+            aria-label="Vídeo ampliado"
+            onClick={() => setBig(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+          />
+        )}
+      </AnimatePresence>
       <motion.div
         className="w-vframe"
-        initial={STILL ? false : { opacity: 0, x: -60, height }}
-        animate={{ opacity: 1, x: 0, height }}
-        transition={{ opacity: tween(0.6, 0.3), x: spring(0.3, 80, 16), height: tween(0.6) }}
+        data-big={big}
+        initial={STILL ? false : { opacity: 0, x: -60, ...rect }}
+        animate={{ opacity: 1, x: 0, ...rect }}
+        transition={{ opacity: tween(0.6, 0.3), x: spring(0.3, 80, 16), default: { duration: 0.6, ease: EASE } }}
       >
         {item.url && (
           <span className="w-vbar">
@@ -2275,7 +2318,7 @@ export function VideoScene({ index }: { index: number }) {
         )}
         <span className="w-vbody">
           <AnimatePresence initial={false}>
-            <CaseVideo key={item.video} item={item} />
+            <CaseVideo key={item.video} item={item} big={big} onToggleBig={() => setBig((b) => !b)} />
           </AnimatePresence>
         </span>
       </motion.div>

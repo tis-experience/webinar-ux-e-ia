@@ -545,7 +545,7 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-case-txt small { display: block; margin-top: 10px; font-size: 26px; line-height: 1.35; color: var(--s7); }
 
 /* Vídeos dos casos */
-.w-vframe { position: absolute; left: 128px; top: 290px; width: 880px; display: flex; flex-direction: column; overflow: hidden; background: #ffffff; border: 2px solid var(--s3); border-radius: 20px; box-shadow: 0 24px 48px rgba(15, 23, 42, 0.1); }
+.w-vframe { position: absolute; z-index: 6; left: 128px; top: 290px; width: 880px; display: flex; flex-direction: column; overflow: hidden; background: #ffffff; border: 2px solid var(--s3); border-radius: 20px; box-shadow: 0 24px 48px rgba(15, 23, 42, 0.1); }
 .w-vbar { flex: 0 0 auto; height: 48px; display: flex; gap: 8px; align-items: center; padding: 0 18px; background: var(--paper); border-bottom: 1px solid var(--s2); }
 .w-vbar > i { width: 12px; height: 12px; border-radius: 6px; background: var(--s3); }
 .w-url { margin-left: 16px; padding: 4px 18px; border-radius: 999px; background: var(--k1); font-family: var(--strong); font-size: 18px; color: var(--blue2); text-decoration: none; }
@@ -553,10 +553,16 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-vbody { position: relative; flex: 1; display: block; background: var(--ink); }
 .w-vid { position: absolute; inset: 0; cursor: pointer; }
 .w-vid video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.w-vid-play { position: absolute; left: 50%; top: 50%; width: 112px; height: 112px; margin: -56px 0 0 -56px; display: grid; place-items: center; padding-left: 6px; border-radius: 56px; background: var(--blue); color: #ffffff; box-shadow: 0 16px 40px rgba(0, 40, 120, 0.4); }
-.w-vid-state { position: absolute; left: 16px; bottom: 18px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 20px; background: rgba(15, 23, 42, 0.64); color: #ffffff; opacity: 0; transition: opacity 0.3s; }
-.w-vid:hover .w-vid-state[data-on="true"] { opacity: 1; }
-.w-vid-progress { position: absolute; left: 0; bottom: 0; width: 100%; height: 5px; background: var(--blue); transform-origin: left; }
+.w-vid-play { position: absolute; left: 50%; top: 50%; width: 112px; height: 112px; margin: -56px 0 0 -56px; display: grid; place-items: center; border-radius: 56px; background: var(--blue); color: #ffffff; box-shadow: 0 16px 40px rgba(0, 40, 120, 0.4); pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
+.w-vid[data-playing="false"] .w-vid-play svg { margin-left: 6px; }
+.w-vid[data-playing="true"] .w-vid-play { opacity: 0; transform: scale(0.85); }
+.w-vid[data-playing="true"]:hover .w-vid-play { opacity: 1; transform: scale(1); }
+.w-vid-expand { position: absolute; right: 16px; top: 16px; width: 48px; height: 48px; display: grid !important; place-items: center; border-radius: 24px; background: rgba(15, 23, 42, 0.64) !important; color: #ffffff !important; opacity: 0; transition: opacity 0.3s, background-color 0.3s; }
+.w-vid:hover .w-vid-expand, .w-vframe[data-big="true"] .w-vid-expand { opacity: 1; }
+.w-vid-expand:hover { background: var(--blue) !important; }
+.w-vbackdrop { position: absolute; inset: 0; z-index: 5; background: rgba(15, 23, 42, 0.76); cursor: pointer; }
+.w-vframe[data-big="true"] { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); }
+.w-vid:hover .w-vid-progress { position: absolute; left: 0; bottom: 0; width: 100%; height: 5px; background: var(--blue); transform-origin: left; }
 .w-vcap { position: absolute; left: 128px; width: 880px; font-size: 22px; color: var(--s5); }
 .w-vside { position: absolute; left: 1072px; top: 300px; width: 720px; }
 .w-facts { display: flex; flex-direction: column; gap: 34px; }
