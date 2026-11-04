@@ -341,11 +341,9 @@ export const SOURCE_ITEMS = [
 export const HARNESS_ITEMS = [
   { icon: "book", text: "Instruções" },
   { icon: "database", text: "Contexto do projecto" },
-  { icon: "scale", text: "Regras de negócio" },
-  { icon: "puzzle", text: "Features" },
+  { icon: "scale", text: "Regras de negócio e features" },
   { icon: "sliders", text: "Ferramentas permitidas" },
-  { icon: "check-circle", text: "Verificações automáticas" },
-  { icon: "flask", text: "Casos de teste" },
+  { icon: "check-circle", text: "Verificações e casos de teste" },
 ];
 
 export const AGENTS_LINES: { kind: string; group: "ref" | "sempre" | "nunca" | ""; text: string; path?: string }[] = [

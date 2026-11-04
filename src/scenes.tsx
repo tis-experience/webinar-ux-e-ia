@@ -1233,7 +1233,7 @@ export function HarnessScene({ build }: { build: number }) {
             <motion.div
               key="card"
               className="w-harness"
-              style={{ left: 724, top: 340, width: 552, height: 524, backgroundColor: "#eef6ff", borderColor: "#0065ed" }}
+              style={{ left: 724, top: 384, width: 552, height: 436, backgroundColor: "#eef6ff", borderColor: "#0065ed" }}
               initial={STILL ? false : { opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={exit}
