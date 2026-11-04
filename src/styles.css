@@ -561,7 +561,7 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-vid-expand { position: absolute; right: 16px; top: 16px; width: 48px; height: 48px; display: grid !important; place-items: center; border-radius: 24px; background: rgba(15, 23, 42, 0.64) !important; color: #ffffff !important; opacity: 0; transition: opacity 0.3s, background-color 0.3s; }
 .w-vid:hover .w-vid-expand, .w-vframe[data-big="true"] .w-vid-expand { opacity: 1; }
 .w-vid-expand:hover, .w-vid-sound:hover { background: var(--blue) !important; }
-.w-vid-sound { position: absolute; right: 76px; top: 16px; width: 48px; height: 48px; display: grid !important; place-items: center; border-radius: 24px; background: rgba(15, 23, 42, 0.64) !important; color: #ffffff !important; transition: background-color 0.3s; }
+.w-vid-sound { position: absolute; left: 16px; bottom: 40px; width: 48px; height: 48px; display: grid !important; place-items: center; border-radius: 24px; background: rgba(15, 23, 42, 0.64) !important; color: #ffffff !important; transition: background-color 0.3s; }
 .w-vid-sound[data-muted="true"] { animation: w-sound 2.4s ease-in-out infinite; }
 @keyframes w-sound { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45); } 50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); } }
 .w-vbackdrop { position: absolute; inset: 0; z-index: 5; background: rgba(15, 23, 42, 0.76); cursor: pointer; }
