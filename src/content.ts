@@ -189,7 +189,7 @@ export const SPEAKERS = [
   {
     name: "Sara Guerreiro",
     role: "Laboratório de Inovação da TIS",
-    bio: "Especialista em UX/UI que transforma tendências em produtos reais. Mais de 15 anos em Marketing, UX/UI e Direcção Criativa em Angola.",
+    bio: "Especialista em UX/UI, transforma tendências em produtos reais no Laboratório de Inovação da TIS. Há mais de 15 anos trabalha em Marketing, UX/UI e Direcção Criativa em Angola.",
     initials: "SG",
     photo: true,
   },
