@@ -41,6 +41,7 @@ import {
   Zap,
 } from "lucide-react";
 import logoPaths from "./imports/logo-mark";
+import { TisLogo } from "./TisLogo";
 import photoMarcell from "./assets/equipa-marcell.webp";
 import photoSara from "./assets/equipa-sara.webp";
 import dsButtonDocs from "./assets/ds-button-docs.webp";
@@ -285,12 +286,12 @@ export function ClosingScene() {
  *  são menores, semitransparentes, desfocados, flutuam mais devagar e ficam por trás quando se cruzam. */
 type Bubble = { x: number; y: number; text: string; s: number; o: number; blur: number };
 const BUBBLES_FRONT: Bubble[] = [
-  { x: 1360, y: 490, text: "?", s: 1.1, o: 1, blur: 0 },
-  { x: 1705, y: 385, text: "", s: 0.9, o: 0.95, blur: 0 },
+  { x: 1430, y: 440, text: "?", s: 1.1, o: 1, blur: 0 },
+  { x: 1640, y: 380, text: "", s: 0.9, o: 0.95, blur: 0 },
 ];
 const BUBBLES_BACK: Bubble[] = [
-  { x: 1760, y: 830, text: "?", s: 0.62, o: 0.5, blur: 3 },
-  { x: 1340, y: 965, text: "", s: 0.7, o: 0.55, blur: 2 },
+  { x: 1690, y: 600, text: "?", s: 0.62, o: 0.5, blur: 3 },
+  { x: 1500, y: 640, text: "", s: 0.7, o: 0.55, blur: 2 },
 ];
 
 function ChatBubbles({ items, offset = 0 }: { items: Bubble[]; offset?: number }) {
@@ -333,10 +334,16 @@ export function QuestionScene({ index }: { index: number }) {
     <section className="w-scene">
       {/* Os balões distantes ficam por trás do símbolo; os próximos, por cima. */}
       <Swap>{q.chat && <ChatBubbles key="back" items={BUBBLES_BACK} offset={2} />}</Swap>
-      <CoverMark rotate={-20} color={q.mark} size={600} style={{ right: 40, bottom: 60 }} />
+      {/* No ecrã das Perguntas, o símbolo grande dá lugar ao logótipo branco por cima do texto. */}
+      {!q.chat && <CoverMark rotate={-20} color={q.mark} size={600} style={{ right: 40, bottom: 60 }} />}
       <div className="w-question">
         <Swap>
           <motion.div key={index} exit={exit}>
+            {q.chat && (
+              <motion.div className="w-question-logo" {...fade(0.05)}>
+                <TisLogo white />
+              </motion.div>
+            )}
             <motion.p className="w-kicker" style={{ color: q.accent, fontSize: 22, letterSpacing: 3 }} {...fade(0.1)}>
               {q.kicker}
             </motion.p>
