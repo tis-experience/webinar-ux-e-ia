@@ -897,13 +897,24 @@ export function ProcessScene({ build }: { build: number }) {
 
 /* ── As três abordagens lado a lado ───────────────────────────────────── */
 
+/** Com um cartão em destaque, um clique fora dele tira o destaque e não muda de ecrã. */
+function useClearFocus(focus: number | null, clear: () => void, card: string) {
+  return (event: { target: EventTarget; stopPropagation: () => void }) => {
+    if (focus === null) return;
+    if ((event.target as Element).closest(card)) return;
+    event.stopPropagation();
+    clear();
+  };
+}
+
 export function ComparisonScene() {
   const [focus, setFocus] = useState<number | null>(null);
+  const clearFocus = useClearFocus(focus, () => setFocus(null), "button.w-cmp-col");
   const fills = ["#daeafe", "#0065ed", "#143b8b"];
   const inks = ["#143b8b", "#f8fafc", "#f8fafc"];
 
   return (
-    <section className="w-scene">
+    <section className="w-scene" onClick={clearFocus}>
       <Head kicker="As três abordagens lado a lado" title="Velocidade e ganho na experiência" />
       <div className="w-cmp">
         {APPROACHES.map((item, n) => (
@@ -2050,9 +2061,10 @@ export function RulesScene() {
 
 export function CreativeScene() {
   const [focus, setFocus] = useState<number | null>(null);
+  const clearFocus = useClearFocus(focus, () => setFocus(null), "button.w-col");
 
   return (
-    <section className="w-scene">
+    <section className="w-scene" onClick={clearFocus}>
       <Head kicker="Processo criativo" title="Inspiração, tendências e ferramentas" />
       <motion.p className="w-legend" {...fade(3.2)}>
         <i aria-hidden />A azul, as ferramentas usadas nos casos que vamos ver
