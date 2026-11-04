@@ -1096,11 +1096,11 @@ export function SourceScene() {
             {SOURCE_ITEMS.map((item, n) => (
               <motion.li key={item.text} initial={STILL ? false : { opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={spring(1.1 + n * 0.14, 110, 16)}>
                 <span className="w-source-icon">
-                  <Icon name={item.icon} size={36} />
+                  <Icon name={item.icon} size={30} />
                 </span>
                 {item.text}
                 <motion.span className="w-ok" initial={STILL ? false : { scale: 0 }} animate={{ scale: 1 }} transition={spring(2.2 + n * 0.14, 260, 14)}>
-                  <Check size={30} strokeWidth={3} aria-hidden />
+                  <Check size={26} strokeWidth={3} aria-hidden />
                 </motion.span>
               </motion.li>
             ))}

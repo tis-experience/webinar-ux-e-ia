@@ -241,9 +241,10 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-paper .w-row { gap: 8px; }
 .w-paper p { font-size: 24px; color: var(--s5); }
 .w-foot { display: flex; gap: 16px; align-items: center; }
+.w-foot svg, .w-foot > span { flex: 0 0 auto; }
 .w-foot p { font-size: 28px; line-height: 1.3; }
-.w-source-list { flex: 1; display: flex; flex-direction: column; gap: 22px; justify-content: center; padding: 30px 40px; background: var(--paper); border-radius: 16px; list-style: none; }
-.w-source-list li { display: flex; gap: 16px; align-items: center; font-size: 32px; }
+.w-source-list { flex: 1; display: flex; flex-direction: column; gap: 16px; justify-content: center; padding: 24px 40px; background: var(--paper); border-radius: 16px; list-style: none; }
+.w-source-list li { display: flex; gap: 16px; align-items: center; font-size: 28px; }
 .w-source-icon { color: var(--blue); display: flex; }
 .w-ok { margin-left: auto; color: #16a34a; display: flex; }
 
