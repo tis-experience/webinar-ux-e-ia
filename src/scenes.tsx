@@ -284,11 +284,11 @@ export function ClosingScene() {
 type Bubble = { x: number; y: number; text: string; s: number; o: number; blur: number };
 const BUBBLES_FRONT: Bubble[] = [
   { x: 1300, y: 450, text: "?", s: 1.1, o: 1, blur: 0 },
-  { x: 1705, y: 425, text: "", s: 0.9, o: 0.95, blur: 0 },
+  { x: 1705, y: 385, text: "", s: 0.9, o: 0.95, blur: 0 },
 ];
 const BUBBLES_BACK: Bubble[] = [
   { x: 1760, y: 830, text: "?", s: 0.62, o: 0.5, blur: 3 },
-  { x: 1390, y: 965, text: "", s: 0.7, o: 0.55, blur: 2 },
+  { x: 1340, y: 965, text: "", s: 0.7, o: 0.55, blur: 2 },
 ];
 
 function ChatBubbles({ items, offset = 0 }: { items: Bubble[]; offset?: number }) {
