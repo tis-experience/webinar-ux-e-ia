@@ -31,7 +31,8 @@ Valem para qualquer texto: textos dos slides, documentação, commits e comentá
 ## Tema 2
 
 O bloco da Sara Guerreiro ("Da prototipagem ao produto") vai do passo `tema-2` a `para-levar`. As perguntas do
-moderador usam a cena das perguntas com fundo azul-escuro `#143b8b` e símbolo `#0d2c6c`. Os textos seguem o deck que
+moderador são ecrãs de título do assunto (cena `topico`, textos em `TOPICS`): fundo azul-escuro `#143b8b`, aspas azuis
+antes da pergunta e o logótipo branco no rodapé, sem o símbolo grande das capas. Os textos seguem o deck que
 a Sara enviou, passados para a grafia pré-Acordo e para as regras de escrita acima.
 
 ## Direcção visual e animação

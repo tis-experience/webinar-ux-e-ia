@@ -477,6 +477,11 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 @keyframes w-sway { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg); } }
 @keyframes w-petal { 0%, 4% { fill: var(--s3); } 10%, 82% { fill: var(--blue); } 92%, 100% { fill: var(--s3); } }
 
+/* Título do assunto (perguntas do moderador) */
+.w-topic { position: absolute; left: 128px; top: 0; bottom: 0; width: 1500px; display: flex; flex-direction: column; justify-content: center; padding-bottom: 60px; color: #ffffff; }
+.w-topic-quote { display: block; height: 150px; margin-left: -8px; font-family: var(--display); font-size: 300px; line-height: 0.92; color: var(--blue); }
+.w-topic .w-question-title { margin-top: 0; }
+
 /* Três regras */
 .w-crules { position: absolute; left: 128px; top: 300px; width: 1664px; display: flex; gap: 40px; }
 .w-crule { width: 528px; height: 540px; display: flex !important; flex-direction: column; gap: 20px; padding: 44px 48px; background: #ffffff !important; border: 2px solid var(--s3) !important; border-radius: 20px; transition: box-shadow 0.4s; }

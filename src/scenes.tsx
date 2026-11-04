@@ -79,6 +79,7 @@ import {
   SPEAKERS,
   TAKEAWAYS,
   TOKENS,
+  TOPICS,
   VALIDATION_CARDS,
   VIDEO_CASES,
 } from "./content";
@@ -741,7 +742,7 @@ export function ProcessScene({ build }: { build: number }) {
                   <g key={d}>
                     <motion.path id={`w-arc${n}`} d={d} fill="none" stroke="#8EC6FD" strokeWidth="4" strokeLinecap="round" {...draw(0.9 + n * 0.25, 0.6)} />
                     {/* A ponta da seta só aparece quando o arco acaba de se desenhar. */}
-                    <motion.path d={d} fill="none" stroke="none" markerEnd="url(#w-ah)" {...fade(0.9 + n * 0.25 + 1.2, 0.2)} />
+                    <motion.path d={d} fill="none" stroke="none" strokeWidth="4" markerEnd="url(#w-ah)" {...fade(0.9 + n * 0.25 + 1.2, 0.2)} />
                   </g>
                 ))}
                 {!STILL && (
@@ -1899,6 +1900,32 @@ export function HandoffScene() {
 }
 
 /* ── Tema 2: da prototipagem ao produto (a parte da Sara) ─────────────── */
+
+/** Pergunta do moderador como título do assunto: as aspas entram primeiro e a pergunta sobe por baixo delas. */
+export function TopicScene({ index }: { index: number }) {
+  return (
+    <section className="w-scene">
+      <div className="w-topic">
+        <motion.span
+          className="w-topic-quote"
+          aria-hidden
+          initial={STILL ? false : { opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={spring(0.1, 90, 16)}
+        >
+          “
+        </motion.span>
+        <h1 className="w-question-title">
+          {TOPICS[index].map((line, n) => (
+            <MaskLine key={line} delay={0.35 + n * 0.12}>
+              {line}
+            </MaskLine>
+          ))}
+        </h1>
+      </div>
+    </section>
+  );
+}
 
 /** Revela um bloco inteiro da esquerda para a direita (mesmo movimento das barras da validação). */
 const reveal = (delay: number, dur = 1, radius = 20) =>

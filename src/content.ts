@@ -147,8 +147,8 @@ export const STEPS: Step[] = [
   },
   {
     id: "criatividade",
-    scene: "pergunta",
-    build: 5,
+    scene: "topico",
+    build: 0,
     label: "Como continuar criativos com IA?",
     bg: NAVY,
     dark: true,
@@ -161,8 +161,8 @@ export const STEPS: Step[] = [
   },
   {
     id: "processo-criativo",
-    scene: "pergunta",
-    build: 6,
+    scene: "topico",
+    build: 1,
     label: "Como funciona o processo criativo?",
     bg: NAVY,
     dark: true,
@@ -181,8 +181,8 @@ export const STEPS: Step[] = [
   },
   {
     id: "casos-na-pratica",
-    scene: "pergunta",
-    build: 7,
+    scene: "topico",
+    build: 2,
     label: "Como é que isto funciona na prática?",
     bg: NAVY,
     dark: true,
@@ -276,9 +276,14 @@ export const QUESTIONS = [
   { kicker: "Os resultados práticos", lines: ["Que ganhos práticos", "se obtêm com", "este processo?"], accent: "#94a3b8", mark: "#475569" },
   { kicker: "Tema 2", lines: ["Como inovar num", "mundo acelerado?"], lead: "Da prototipagem ao produto", accent: "#8ec6fd", mark: "#0050da" },
   { kicker: "Webinar UX e IA", lines: ["Perguntas"], lead: "Envie a sua pergunta pelo chat. Os oradores respondem a seguir.", accent: "#eef6ff", mark: "#0050da", chat: true },
-  { kicker: "Criatividade com IA", lines: ["Como continuar", "criativos com IA?"], accent: "#8ec6fd", mark: "#0d2c6c" },
-  { kicker: "Processo criativo", lines: ["Como funciona o", "processo criativo?"], accent: "#8ec6fd", mark: "#0d2c6c" },
-  { kicker: "Casos reais da TIS", lines: ["Como é que isto", "funciona na prática?"], accent: "#8ec6fd", mark: "#0d2c6c" },
+];
+
+/** Perguntas do moderador no Tema 2: ecrãs de título do assunto, com as aspas antes da pergunta e o logótipo branco
+ *  no rodapé, sem o símbolo grande das capas. */
+export const TOPICS = [
+  ["Como continuar", "criativos com IA?"],
+  ["Como funciona o", "processo criativo?"],
+  ["Como é que isto", "funciona na prática?"],
 ];
 
 export const SPEAKERS = [

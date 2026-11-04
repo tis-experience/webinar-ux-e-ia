@@ -16,6 +16,7 @@ import {
   RulesScene,
   StepsScene,
   TakeawayScene,
+  TopicScene,
   VideoScene,
   CoverScene,
   ClosingScene,
@@ -221,6 +222,7 @@ export default function App() {
               {step.scene === "consistencia" && <ConsistencyScene />}
               {step.scene === "validacao" && <ValidationScene />}
               {step.scene === "handoff" && <HandoffScene />}
+              {step.scene === "topico" && <TopicScene index={step.build ?? 0} />}
               {step.scene === "regras" && <RulesScene />}
               {step.scene === "criativo" && <CreativeScene />}
               {step.scene === "diferencial" && <DifferentialScene />}
@@ -241,7 +243,7 @@ export default function App() {
               <i aria-hidden />
               <span>{footer[1]}</span>
             </p>
-            {!dark && <TisLogo />}
+            {(!dark || step.scene === "topico") && <TisLogo white={dark} />}
           </footer>
         </div>
 
