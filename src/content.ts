@@ -446,8 +446,6 @@ export const DIFFERENTIALS = [
   { icon: "compass", title: "Critério humano", text: "Saber o que vale a pena construir, e como" },
 ];
 
-/** Ferramentas que vão passando no resultado, para mostrar que mudam todos os meses. */
-export const PASSING_TOOLS = ["ChatGPT", "Midjourney", "Figma Make", "Gemini", "Kling", "Lovable", "Claude", "Nano Banana"];
 
 export const CASES = [
   { n: 1, name: "Somos TIS", role: "A IA que responde", text: "Portal de Pessoas & Cultura com um agente de RH", step: "somos-tis" },

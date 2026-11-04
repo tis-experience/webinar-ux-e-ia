@@ -527,13 +527,9 @@ svg.w-layer { width: 1920px; height: 1080px; overflow: visible; pointer-events: 
 .w-dif [data-anim="heart"] svg { animation: w-beat 2.4s ease-in-out infinite; }
 .w-dif [data-anim="compass"] svg { animation: w-sway 4s ease-in-out infinite; }
 .w-eq { position: absolute; left: 0; right: 0; top: 650px; text-align: center; }
-.w-impact { position: absolute; left: 128px; top: 718px; width: 1664px; height: 180px; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; background: var(--blue); border-radius: 20px; color: #ffffff; }
+.w-impact { position: absolute; left: 128px; top: 718px; width: 1664px; height: 180px; display: flex; align-items: center; justify-content: center; padding: 0 56px; text-align: center; background: var(--blue); border-radius: 20px; color: #ffffff; }
 .w-impact h3 { font-family: var(--display); font-weight: 400; font-size: 52px; line-height: 1.1; letter-spacing: -1px; }
 .w-impact p { margin-top: 10px; font-size: 28px; color: var(--k2); }
-.w-tool { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-.w-tool small { font-family: var(--strong); font-size: 18px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--k3); }
-.w-tool-pill { position: relative; width: 320px; height: 68px; display: grid; place-items: center; overflow: hidden; border-radius: 34px; background: #ffffff; }
-.w-tool-pill b { font-family: var(--strong); font-weight: 400; font-size: 30px; color: var(--blue); white-space: nowrap; }
 
 /* Três casos */
 .w-cases { position: absolute; left: 128px; top: 300px; width: 1664px; display: flex; gap: 40px; }

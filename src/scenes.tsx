@@ -69,7 +69,6 @@ import {
   LESSONS,
   LUMA_COLUMNS,
   PANELS,
-  PASSING_TOOLS,
   PORTAL_POINTS,
   PHASES,
   PROCESS_HEADS,
@@ -2113,14 +2112,6 @@ export function CreativeScene() {
 }
 
 export function DifferentialScene() {
-  const [tool, setTool] = useState(0);
-
-  useEffect(() => {
-    if (STILL) return undefined;
-    const timer = window.setInterval(() => setTool((t) => (t + 1) % PASSING_TOOLS.length), 2600);
-    return () => window.clearInterval(timer);
-  }, []);
-
   return (
     <section className="w-scene">
       <Head kicker="Processo criativo" title="O diferencial de inovação" />
@@ -2157,22 +2148,6 @@ export function DifferentialScene() {
         <div>
           <h3>Inovação com impacto</h3>
           <p>A ferramenta muda todos os meses, mas estas três coisas ficam.</p>
-        </div>
-        <div className="w-tool">
-          <small>A ferramenta deste mês</small>
-          <span className="w-tool-pill">
-            <Swap mode="popLayout">
-              <motion.b
-                key={tool}
-                initial={STILL ? false : { y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -40, opacity: 0 }}
-                transition={{ duration: 0.5, ease: EASE }}
-              >
-                {PASSING_TOOLS[tool]}
-              </motion.b>
-            </Swap>
-          </span>
         </div>
       </motion.div>
     </section>
